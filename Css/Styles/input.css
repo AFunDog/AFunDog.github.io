@@ -1,0 +1,9 @@
+input {
+    background-color: #444444;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px #111111;
+}
+
+input:focus{
+    background-color: #666666;
+}

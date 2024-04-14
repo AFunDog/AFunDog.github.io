@@ -1,0 +1,46 @@
+html {
+    /* 字体大小 */
+    /* font-size: 24px;
+    font-family: "宋体";
+    font-weight: bold; */
+    /* 复合属性 */
+
+    font: normal 400 20px "宋体";
+    background-color: #333333;
+    /* margin: 0px auto; */
+}
+
+* {
+    color: #EEEEEE;
+}
+
+h1 {
+    background-color: #AAAAAA;
+    border-radius: 8px;
+    color: #333333;
+    text-align: center;
+}
+
+table {
+    width: 720px;
+}
+
+
+.img {
+    margin: 0px auto;
+    text-align: center;
+}
+
+img{
+    display: inline-block;
+    border-radius: 8px;
+    max-width: 720px;
+}
+
+ul {
+    display: inline;
+}
+
+.def-shadow{
+    box-shadow: 4px 4px 4px #111111AA;
+}

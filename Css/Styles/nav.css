@@ -1,0 +1,26 @@
+.nav {
+    display: block;
+    /* display: inline-block; */
+    border-radius: 8px;
+    /* min-height: 480px; */
+    margin: 16px;
+    min-height: 360px;
+    background: #444444 url(../../Assets/headBackground.png) no-repeat scroll center;
+    background-position: center -16lh;
+    background-size: cover;
+    /* align-content: center; */
+}
+
+.nav-items {
+    height:360px;
+    width: fit-content;
+    display: block;
+    background-color: #444444AA;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.nav-items span {
+    display: grid;
+
+    /* width: 256px; */
+}

@@ -1,0 +1,18 @@
+.link {
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+    /* width: fit-content; */
+    padding: 0px 8px 0px 8px;
+    /* background-color: #444444; */
+    border-radius: 4px;
+}
+
+
+.link:hover {
+    background-color: #ffa500;
+}
+
+.link *:hover{
+    color: #444444;
+}
