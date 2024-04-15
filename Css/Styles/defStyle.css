@@ -12,12 +12,15 @@ html {
 
 * {
     color: #EEEEEE;
+    /* 清除所有元素初始的边距 */
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-    background-color: #AAAAAA;
+    background-color: #CCCCCC;
     border-radius: 8px;
-    color: #333333;
+    color: #111111;
     text-align: center;
 }
 
@@ -25,11 +28,6 @@ table {
     width: 720px;
 }
 
-
-.img {
-    margin: 0px auto;
-    text-align: center;
-}
 
 img{
     display: inline-block;

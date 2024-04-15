@@ -1,0 +1,26 @@
+.show-box {
+    display: inline-block;
+    max-width: 300px;
+    min-height: 400px;
+    background-color: #444444;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.show-box img {
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.show-box-saying{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.show-box-au{
+    line-height: 72px;
+    width: 100%;
+    text-align: center;
+}
