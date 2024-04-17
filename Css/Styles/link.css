@@ -1,19 +1,28 @@
 .link {
-    display: inline-block;
+    position: relative;
     font-weight: 700;
-    text-decoration: none;
     /* width: fit-content; */
     padding: 0px 8px 0px 8px;
     /* background-color: #444444; */
     border-radius: 4px;
-    margin: 8px 4px 8px 4px;
+
+    /* 过渡效果 */
+    transition: all .2s;
 }
 
+.link::after{
+    content: '\e92e';
+
+    position: absolute;
+    right: 16px;
+    font-family: 'icomoon';
+}
+
+.link a {
+    text-decoration: none;
+}
 
 .link:hover {
     background-color: #ffa500;
-}
-
-.link *:hover{
-    color: #444444;
+    color: #111111;
 }

@@ -1,23 +1,28 @@
 .nav {
-    display: block;
     /* display: inline-block; */
     border-radius: 8px;
+    position: relative;
     /* min-height: 480px; */
-    margin: 16px;
-    min-height: 360px;
+    width: 1280px;
+    height:720px;
+    margin: 16px auto;
     background: #444444 url(../../Assets/headBackground.png) no-repeat scroll center;
-    background-position: center -16lh;
-    background-size: cover;
+    background-position: -40% 40%;
+    /* background-size: cover; */
     /* align-content: center; */
 }
 
 .nav-items {
-    
-    height:360px;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    min-width: 320px;
     width: fit-content;
-    display: block;
-    background-color: #444444AA;
+
+    background-color: #333333;
     border-radius: 8px 0px 0px 8px;
+    
+    line-height: 300%;
 }
 
 .nav-items span {

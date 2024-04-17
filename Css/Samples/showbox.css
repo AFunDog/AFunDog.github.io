@@ -1,26 +1,83 @@
-.show-box {
-    display: inline-block;
-    max-width: 300px;
-    min-height: 400px;
-    background-color: #444444;
-    margin: 0 auto;
+.show-nav {
+    position: relative;
+    left: 20%;
+    height: 512px;
+    min-width: 720px;
     border-radius: 8px;
+    width: 60%;
 }
 
-.show-box img {
-    width: 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+.show-nav-list {
+    position: absolute;
+    left: 0;
+    width: 30%;
+    height: 100%;
+    background-color: #333333;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
-.show-box-saying{
+.show-nav-img {
+    position: absolute;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background-color: gray;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.show-nav-img-left {
+    left: 0;
+}
+
+.show-nav-img-left::after {
+    display: inline-block;
+    content: '\e92f';
+
+    width: 32px;
+    height: 32px;
+}
+
+.show-nav-img-right {
+    right: 0;
+}
+
+.show-nav-img-right::after {
+    display: inline-block;
+    content: '\e930';
+
+    width: 32px;
+    height: 32px;
+}
+
+.show-nav-img-left,
+.show-nav-img-right {
+    display: inline-block;
+
+    position: absolute;
+    top: calc(50% - 16px);
+    height: 32px;
+    line-height: 32px;
     text-align: center;
+}
+
+.show-nav-img::after {
+    content: '';
+    display: none;
+
+    position: absolute;
+
+    left: 0;
     width: 100%;
     height: 100%;
+
+    background-color: #333333AA;
+    border-radius: 0 8px 8px 0;
 }
 
-.show-box-au{
-    line-height: 72px;
-    width: 100%;
-    text-align: center;
+/* 利用后代选择器 */
+.show-nav-img:hover::after {
+    /* 当鼠标经过展示图片时，将cover层显示出来 */
+    display: block;
 }
