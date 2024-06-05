@@ -1,0 +1,30 @@
+.caption-info-container {
+    margin: 0 auto;
+    width: 400px;
+}
+
+.caption-info-container-span {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.caption-info-container-span img{
+    height: 80%;
+    border-radius: 80%;
+}
+.caption-info-container-span p{
+    margin: 0em 0em 0em 0.5em;
+
+    font-size: 36px;
+}
+
+.caption-info-container-desc {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100%;
+    font-size: 32px;
+}

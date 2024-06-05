@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS学习</title>
+    <link href="../Css/Styles/defStyle.css" rel="stylesheet">
+</head>
+<style>
+    body{
+        background: url('../Assets/rBackground1.jpg') no-repeat top center/cover;
+    }
+    #members{
+        display: inline-block;
+        margin: 1em 0px 1em 0px;
+    }
+    #members li::before{
+        content: '-';
+        margin: 0px 0px 0px 2em;
+    }
+    #selector{
+        font-size: 32px;
+        margin: 0.5em 0px 0.5em 2em;
+    }
+    #start,#end{
+        background-color: rebeccapurple;
+        padding: 4px;
+        cursor: pointer;
+        margin: 0em 0em 0em 4em;
+    }
+</style>
+
+<body>
+    <h2>在以下人员中进行抽奖</h2>
+    <ul id="members">
+    </ul>
+    <div>
+        恭喜中奖：
+    </div>
+    <div id="selector">
+        ???
+    </div>
+    <span id="start">开始抽奖</span>
+    <span id="end">停止抽奖</span>
+    <script src="../Js/learn.js"></script>
+</body>
+
+</html>

@@ -1,5 +1,7 @@
 .show {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 80%;
     /* height: 480px; */
     margin: 0 auto;
@@ -13,7 +15,7 @@
     width: 320px;
     height: 480px;
     background-color: #333333;
-    margin: 8px 8px;
+    margin: 32px 8px 8px 8px;
     border-radius: 8px;
 
     /* 过渡效果，目标是全部属性 */
@@ -27,6 +29,7 @@
 }
 
 .show-card img {
+    transform: translateX(-30%);
     height: 75%;
     border-radius: 0;
 }
