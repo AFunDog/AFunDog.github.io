@@ -1,15 +1,14 @@
-.nav {
+.nav-box {
     position: relative;
     display: flex;
     flex-direction: row;
     left: 20%;
     height: 640px;
-    min-width: 720px;
     border-radius: 8px;
     width: 60%;
 }
 
-.nav-list {
+.nav-box-list {
     flex: 2;
     min-width: 216px;
     max-width: 384px;
@@ -19,7 +18,7 @@
     border-bottom-left-radius: 8px;
 }
 
-.nav-region{
+.nav-box-region{
     position: relative;
     flex: 8;
     height: 100%;
@@ -27,7 +26,7 @@
     border-bottom-right-radius: 8px;
 }
 
-.nav-img {
+.nav-box-img {
     position: absolute;
     right: 0;
     width: 100%;
@@ -40,11 +39,11 @@
 
 }
 
-.nav-img-left {
+.nav-box-img-left {
     left: 0;
 }
 
-.nav-img-left::after {
+.nav-box-img-left::after {
     display: inline-block;
     content: '\e92f';
 
@@ -52,11 +51,11 @@
     height: 32px;
 }
 
-.nav-img-right {
+.nav-box-img-right {
     right: 0;
 }
 
-.nav-img-right::after {
+.nav-box-img-right::after {
     display: inline-block;
     content: '\e930';
 
@@ -64,8 +63,8 @@
     height: 32px;
 }
 
-.nav-img-left,
-.nav-img-right {
+.nav-box-img-left,
+.nav-box-img-right {
     display: inline-block;
 
     position: absolute;
@@ -74,12 +73,12 @@
     line-height: 32px;
     text-align: center;
 }
-.nav-img-left:hover,
-.nav-img-right:hover{
+.nav-box-img-left:hover,
+.nav-box-img-right:hover{
     font-size: 28px;
 }
 
-.nav-img::after {
+.nav-box-img::after {
     content: '';
     display: none;
 
@@ -94,13 +93,13 @@
 }
 
 /* 利用后代选择器 */
-.nav-img:hover::after {
+.nav-box-img:hover::after {
     /* 当鼠标经过展示图片时，将cover层显示出来  */
     display: block;
     pointer-events: none;
 }
 
-.nav-slider{
+.nav-box-slider{
     position: absolute;
     bottom: 0;
     display: flex;
@@ -131,7 +130,7 @@
 
 }
 
-.nav-item {
+.nav-box-item {
     position: relative;
     display: grid;
     border-radius: 8px;
@@ -140,21 +139,21 @@
     text-align: left;
     line-height: 200%;
 }
-.nav-item::after{
+.nav-box-item::after{
     content: '\e92e';
 
     position: absolute;
     right: 16px;
     font-family: 'icomoon';
 }
-.nav-item:hover{
+.nav-box-item:hover{
     background-color: #ffa500;
     color: #111111;
 }
-.nav-item:hover a{
+.nav-box-item:hover a{
     color: #111111;
 }
 
-.nav-item a{
+.nav-box-item a{
     text-decoration: none;
 }

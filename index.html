@@ -8,14 +8,26 @@
     <title>我的主页</title>
     <link href="Css/Styles/defStyle.css" rel="stylesheet">
     <link href="Css/Controls/showcard.css" rel="stylesheet">
-    <link href="Css/Controls/nav.css" rel="stylesheet">
+    <link href="Css/Controls/nav-box.css" rel="stylesheet">
     <link href="Css/Controls/captioninfo.css" rel="stylesheet">
+    <link href="Css/Controls/nav-top.css" rel="stylesheet">
 </head>
 
 <body>
     <header>我的主页</header>
     <br>
-    <caption >
+    <nav id="navTop">
+        <!-- <ul class="nav-top">
+            <li><a href="#">主页</a></li>
+            <li><a href="#">HTML标签</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JS</a></li>
+            <li><a href="#">算法</a></li>
+            <li><a href="#">其他分享</a></li>
+        </ul> -->
+    </nav>
+    <br>
+    <caption>
         <div class="caption-info-container">
             <div class="caption-info-container-span">
                 <img class="def-shadow" src="Assets/Icon.ico">
@@ -28,20 +40,20 @@
     </caption>
     <br>
     <article>
-        <div class="nav def-shadow">
-            <div class="nav-list">
+        <div class="nav-box def-shadow">
+            <div class="nav-box-list">
 
             </div>
-            <div class="nav-region">
-                <div class="nav-img">
+            <div class="nav-box-region">
+                <div class="nav-box-img">
 
                 </div>
-                <div class="nav-img-left icon-font">
+                <div class="nav-box-img-left icon-font">
 
                 </div>
-                <div class="nav-img-right icon-font">
+                <div class="nav-box-img-right icon-font">
                 </div>
-                <div class="nav-slider">
+                <div class="nav-box-slider">
                 </div>
             </div>
 
@@ -49,8 +61,9 @@
     </article>
 
     <div class="show clearfix"></div>
-    <script src="/Js/nav.js"></script>
     <script src="/Js/showcard.js"></script>
+    <script src="/Js/nav-box.js"></script>
+    <script src="/Js/nav-top.js"></script>
 </body>
 
 </html>

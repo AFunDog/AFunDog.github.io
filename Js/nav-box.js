@@ -27,11 +27,11 @@ const NavUriList = [
     {url:'Pages/JS学习.html',title:'JS学习'},
 ]
 
-const navListContainer = document.querySelector('.nav-list')
-const showImage = document.querySelector('.nav-img')
-const leftButton = document.querySelector('.nav-img-left')
-const rightButton = document.querySelector('.nav-img-right')
-const sliderContainer = document.querySelector('.nav-slider')
+const navListContainer = document.querySelector('.nav-box-list')
+const showImage = document.querySelector('.nav-box-img')
+const leftButton = document.querySelector('.nav-box-img-left')
+const rightButton = document.querySelector('.nav-box-img-right')
+const sliderContainer = document.querySelector('.nav-box-slider')
 
 
 let ptr = 0
@@ -54,18 +54,16 @@ function MoveImageToPrev() {
 }
 
 function InitSliders(){
-    sliderContainer.innerHTML = ''
+    // sliderContainer.innerHTML = ''
     for(let i = 0;i < imageList.length;i++){
+        let point = document.createElement('div')
+        point.dataset.id = i
+        point.classList.add('slider-point')
         if(ptr == i){
-            sliderContainer.innerHTML += `<div data-id="${i}" class="slider-point active-point"></div>`;
+            point.classList.add('active-point')
         }
-        else{
-            sliderContainer.innerHTML += `<div data-id="${i}" class="slider-point"></div>`;
-        }
-    }
-    for(let i = 0;i < imageList.length;i++){
-        let slider = document.querySelector(`.slider-point:nth-child(${i + 1})`)
-        sliderList.push(slider)
+        sliderContainer.appendChild(point)
+        sliderList.push(point)
     }
     sliderContainer.addEventListener('click',(e)=>{
         if(e.target.dataset.id === undefined) return
@@ -85,8 +83,15 @@ function UpdateSliders(){
 
 function InitLinks(){
     for(let i = 0;i < NavUriList.length;i++){
-        navListContainer.innerHTML += 
-        `<div class="nav-item"><a href="${NavUriList[i].url}">${NavUriList[i].title}</a></div>`
+        let link = document.createElement('div')
+        let link_a = document.createElement('a')
+        link_a.href = NavUriList[i].url
+        link_a.innerText = NavUriList[i].title
+        link.classList.add('nav-box-item')
+        link.appendChild(link_a)
+        navListContainer.appendChild(link)
+        // navListContainer.innerHTML += 
+        // `<div class="nav-box-item"><a href="${NavUriList[i].url}">${NavUriList[i].title}</a></div>`
     }
 }
 

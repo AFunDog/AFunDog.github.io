@@ -1,5 +1,8 @@
 const memberList = ['小王', '张三', '电棍', '哈基米']
-const rBackgroundImage = ['url(../Assets/rBackground1.jpg)', 'url(../Assets/rBackground2.png)']
+const rBackgroundImage = [
+    'url(../Assets/rBackground1.jpg)', 
+    'url(../Assets/rBackground2.png)'
+]
 
 const members = document.querySelector('#members')
 const selector = document.querySelector('#selector')
@@ -9,7 +12,6 @@ const endButton = document.querySelector('#end')
 
 let interval
 function StartLucky() {
-
     interval = setInterval(() => {
         const luckyMember = memberList[Math.floor(Math.random() * memberList.length)]
         selector.innerHTML = luckyMember
