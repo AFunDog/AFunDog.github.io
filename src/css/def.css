@@ -1,0 +1,58 @@
+/* 字体图标声明 */
+@font-face {
+  font-family: 'icomoon';
+  src: url('../../public/fonts/icomoon.eot?glgrsi');
+  src: url('..//public/fonts/icomoon.eot?glgrsi#iefix') format('embedded-opentype'),
+    url('../../public/fonts/icomoon.ttf?glgrsi') format('truetype'),
+    url('../../public/fonts/icomoon.woff?glgrsi') format('woff'),
+    url('../../public/fonts/icomoon.svg?glgrsi#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+
+
+  --background-color : #333333;
+  --dark-control-color : #202020a8;
+
+  min-width: 50rem;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  color: rgba(255, 255, 255, 0.87);
+  /* 清除所有元素初始的边距 */
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+.icon-font {
+  font-family: 'icomoon';
+}
+
+
+img {
+  /* 取消图片底侧有空白缝隙的问题 */
+  vertical-align: middle;
+}
+
+
+.def-shadow {
+  box-shadow: 0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.33);
+}
