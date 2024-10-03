@@ -111,33 +111,6 @@ const navTopList = router.getRoutes()
     background-color: var(--foreground-color);
 
     transition: all .2s;
-  &:hover,
-  &.selected {
-    /* line-height: v-bind('itemSize.height * 1.04 + "rem"'); */
-    /* width: v-bind('itemSize.width * 1.04 + "rem"'); */
-    /* height: v-bind('itemSize.height * 1.04 + "rem"'); */
-    /* background-color: #d35400; */
-    font-size: 1.2rem;
-    color: var(--theme-color);
-    &::after {
-      margin-left: 0%;
-      width: 100%;
-      background-color: var(--theme-color);
-
-    }
-
-  }
-
-  &::after {
-    display: block;
-    content: '';
-
-    margin-left: 30%;
-    width: 40%;
-    height: 0.1rem;
-    background-color: var(--foreground-color);
-
-    transition: all .2s;
   }
 }
 </style>
