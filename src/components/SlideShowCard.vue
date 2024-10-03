@@ -17,15 +17,10 @@ const showCardList = [
   },
   {
     url: card3, saying: '不能再后悔了 全力以赴', author: '鲁迪乌斯'
-  }
+  },
 ]
 
 const selectedIndex = ref(0)
-const transLeft = ref(0)
-
-watch(selectedIndex, (newIndex,_)=>{
-  transLeft.value = -(cardSize.width + cardSpace * 2) * newIndex
-})
 
 function onCardClicked(index: number) {
   selectedIndex.value = index
@@ -65,13 +60,20 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
   display: flex;
   position: relative;
 
-  left: calc(50% - v-bind('(cardSize.width + cardSpace * 2) / 2 - transLeft + "rem"'));
-  width: fit-content;
+  justify-content: center;
+  margin: 0 auto;
+  transform: translateX(calc(v-bind('(cardSize.width + cardSpace * 2) * ((showCardList.length - 1) / 2 - selectedIndex) + "rem"')));
+  
+  height: v-bind('cardSize.height * 1.2 + 4 + "rem"');
+
+  align-items: center;
 
   transition: all .2s;
 }
 
-.slideshow-image-container {}
+.slideshow-image-container {
+  display: block;
+}
 
 .show-card {
   display: flex;
@@ -83,10 +85,10 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
   margin: 1rem v-bind('cardSpace + "rem"');
 
   border-radius: 0.5rem;
-  border-style: solid;
+
   box-sizing: content-box;
   border-color: transparent;
-  border-width: 0.25rem;
+
   background-color: var(--dark-control-color);
 
   align-items: center;
@@ -98,9 +100,18 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
 
   &:hover,
   &.selected {
-    border-color: #e67e22;
-    box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from #e67e22 r g b / .44);
+    border-style: solid;
+    border-width: 0.25rem;
+    width: v-bind('cardSize.width * 1.04 + "rem"');
+    height: v-bind('cardSize.height * 1.04 + "rem"');
+    border-color: var(--theme-color);
+    box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44);
     transform: translateY(-0.25rem);
+  }
+
+  &.selected {
+    width: v-bind('cardSize.width * 1.1 + "rem"');
+    height: v-bind('cardSize.height * 1.1 + "rem"');
   }
 
   &>img {
