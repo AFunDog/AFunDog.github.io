@@ -23,13 +23,7 @@ const navTopList = router.getRoutes()
       :to="(item.path)">
       {{ item.meta.title as string }}
     </RouterLink>
-    <RouterLink v-for="(item, index) in navTopList" :class="[props.index == index ? 'nav-item selected' : 'nav-item']"
-      :to="(item.path)">
-      {{ item.meta.title as string }}
-    </RouterLink>
   </nav>
-  <!-- <div class="nav-bottom-line"></div> -->
-  <!-- <div class="nav-bottom-line"></div> -->
 </template>
 
 <style scoped>
@@ -39,7 +33,6 @@ const navTopList = router.getRoutes()
 
   left: 5%;
   width: 90%;
-  height: v-bind('itemSize.height * 1.1 + "rem"');
   height: v-bind('itemSize.height * 1.1 + "rem"');
   margin-top: 1rem;
 
