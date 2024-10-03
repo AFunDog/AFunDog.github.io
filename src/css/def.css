@@ -14,8 +14,11 @@
 :root {
 
 
+  --foreground-color : rgba(255, 255, 255, 0.87);
   --background-color : #333333;
   --dark-control-color : #202020a8;
+  --theme-color : #e67e22;
+  --theme-dark-color : rgb(from var(--theme-color) r calc(g - 40) calc(b + 30));
 
   min-width: 50rem;
 
@@ -34,7 +37,7 @@
 }
 
 * {
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--foreground-color);
   /* 清除所有元素初始的边距 */
   margin: 0;
   padding: 0;

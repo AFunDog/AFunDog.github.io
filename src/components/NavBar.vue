@@ -1,24 +1,30 @@
 <script setup lang="ts">
 
-import { ref } from 'vue'
+import { RouterLink, useRouter } from 'vue-router';
 
-const navTopList = ref([
-  { title: '主页', url: '#' },
-  { title: '前端', url: '#' },
-  { title: 'C#', url: '#' },
-  { title: 'Java', url: '#' },
-  { title: 'C++与算法', url: '#' },
-  { title: '其他分享', url: '#' }
-])
+
+const props = defineProps<{
+  index: number
+}>()
+
+
+const itemSize = { width: 8, height: 3 }
+
+const router = useRouter()
+
+
+const navTopList = router.getRoutes()
 
 </script>
 
 <template>
   <nav class="nav-bar">
-    <a v-for="item in navTopList" class="nav-item" :href="item.url">
-      {{ item.title }}
-    </a>
+    <RouterLink v-for="(item, index) in navTopList" :class="[props.index == index ? 'nav-item selected' : 'nav-item']"
+      :to="(item.path)">
+      {{ item.meta.title as string }}
+    </RouterLink>
   </nav>
+  <!-- <div class="nav-bottom-line"></div> -->
 </template>
 
 <style scoped>
@@ -28,7 +34,7 @@ const navTopList = ref([
 
   left: 5%;
   width: 90%;
-  height: 5rem;
+  height: v-bind('itemSize.height * 1.1 + "rem"');
   margin-top: 1rem;
 
   list-style: none;
@@ -38,30 +44,56 @@ const navTopList = ref([
   /* background-color: aliceblue; */
 }
 
-.nav-item{
-  
+.nav-item {
   text-decoration: none;
   cursor: pointer;
 
   margin: 0 0.5rem;
 
-  text-align: center;
-  line-height: 5rem;
-  height: 100%;
-  width: 100%;
 
-  border-radius: 0.5rem;
-  
-  background-color: var(--dark-control-color);
+
+  text-align: center;
+  line-height: v-bind('itemSize.height + "rem"');
+  width: v-bind('itemSize.width + "rem"');
+  height: v-bind('itemSize.height + "rem"');
+
+  /* border-style: solid;
+  border-width: 0 0 0.1rem 0; */
+
+  /* border-radius: 0.5rem; */
+
+  /* background-color: var(--dark-control-color); */
 
   user-select: none;
   transition: all .2s;
 
-  &:hover{
-    width: 108%;
-    height: 104%;
-    line-height: calc(5rem * 1.04);
-    background-color: #d35400;
+  &:hover,
+  &.selected {
+    /* line-height: v-bind('itemSize.height * 1.04 + "rem"'); */
+    /* width: v-bind('itemSize.width * 1.04 + "rem"'); */
+    /* height: v-bind('itemSize.height * 1.04 + "rem"'); */
+    /* background-color: #d35400; */
+    font-size: 1.2rem;
+    color: var(--theme-color);
+    &::after {
+      margin-left: 0%;
+      width: 100%;
+      background-color: var(--theme-color);
+
+    }
+
+  }
+
+  &::after {
+    display: block;
+    content: '';
+
+    margin-left: 30%;
+    width: 40%;
+    height: 0.1rem;
+    background-color: var(--foreground-color);
+
+    transition: all .2s;
   }
 }
 </style>
