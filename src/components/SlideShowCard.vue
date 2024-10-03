@@ -74,6 +74,9 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
 .slideshow-image-container {
   display: block;
 }
+.slideshow-image-container {
+  display: block;
+}
 
 .show-card {
   display: flex;
@@ -86,8 +89,10 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
 
   border-radius: 0.5rem;
 
+
   box-sizing: content-box;
   border-color: transparent;
+
 
   background-color: var(--dark-control-color);
 
@@ -106,7 +111,18 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
     height: v-bind('cardSize.height * 1.04 + "rem"');
     border-color: var(--theme-color);
     box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44);
+    border-style: solid;
+    border-width: 0.25rem;
+    width: v-bind('cardSize.width * 1.04 + "rem"');
+    height: v-bind('cardSize.height * 1.04 + "rem"');
+    border-color: var(--theme-color);
+    box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44);
     transform: translateY(-0.25rem);
+  }
+
+  &.selected {
+    width: v-bind('cardSize.width * 1.1 + "rem"');
+    height: v-bind('cardSize.height * 1.1 + "rem"');
   }
 
   &.selected {
