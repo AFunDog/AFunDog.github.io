@@ -51,7 +51,6 @@ const navTopList = router.getRoutes()
 }
 
 .nav-item {
-.nav-item {
   text-decoration: none;
   cursor: pointer;
 
