@@ -66,7 +66,7 @@
   cursor: pointer;
 
   &:hover {
-    scale: 1.06;
+    scale: 1.12;
   }
 
 }

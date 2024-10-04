@@ -15,10 +15,10 @@ permissions:
   pages: write
   id-token: write
  
-# 允许一个并发的部署
+# 不允许一个并发的部署
 concurrency:
   group: 'pages'
-  cancel-in-progress: true
+  cancel-in-progress: false
  
 jobs:
   # 单次部署的工作描述
@@ -29,10 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
+          # 这里更改使用 npm 的版本
           node-version: 20.17.0
           cache: 'npm'
       - name: Install dependencies
@@ -40,12 +41,12 @@ jobs:
       - name: Build
         run: npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist repository
           path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
