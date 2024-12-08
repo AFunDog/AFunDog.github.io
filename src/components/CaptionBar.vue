@@ -6,25 +6,29 @@
 
 <template>
 
-  <caption class="caption-outer-container">
-
-    <div class="caption-content-container">
-      <img class="caption-icon def-shadow" src="../assets/头像.png">
-      <p class="caption-name">曾 昆</p>
+  <div>
+    <!-- <div class="caption-outer-container">
+      <div class="caption-content-container">
+        <img class="caption-icon def-shadow" src="../assets/头像.png">
+        <div>
+          <p class="caption-name">曾 昆</p>
+          <p class="caption-name">AFunDog</p>
+        </div>
+      </div>
+    </div> -->
+    <div class="caption-desc">
+      广阔天地 大有作为
     </div>
-  </caption>
-  <div class="caption-desc">
-    广阔天地 大有作为
   </div>
 </template>
 
 <style scoped>
 .caption-outer-container {
   display: flex;
-  position: relative;
+  /* position: relative;
 
   width: 60%;
-  left: 20%;
+  left: 20%; */
 
   margin: 6rem 0;
   /* padding: 1.2rem; */
@@ -32,7 +36,7 @@
   justify-content: center;
   align-items: center;
 
-  border: 1rem solid transparent;
+  /* border: 1rem solid transparent;
   border-radius: 2rem;
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
@@ -40,7 +44,7 @@
     linear-gradient(to right, var(--background-color), var(--background-color)),
     linear-gradient(to right, var(--theme-color), var(--theme-dark-color));
 
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 
@@ -90,9 +94,9 @@
 
   --caption-base-font-size: 4rem;
 
-
-
   position: relative;
+
+  margin-top: 8rem;
 
   width: 80%;
   left: 10%;

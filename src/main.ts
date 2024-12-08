@@ -1,11 +1,12 @@
 import { createApp } from 'vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
-import hljs from 'highlight.js'
 
 
-import './css/def.css'
+import './css/defStyle.css'
 // github markdown 格式
 import 'github-markdown-css'
+// 从定义 markdown 格式
+import './css/markdownStyle.css'
 // 代码高亮
 import 'highlight.js/styles/github-dark.css'
 
@@ -30,13 +31,6 @@ const router = createRouter({ history: createMemoryHistory(), routes })
 
 createApp(App)
     .use(router)
-    // 定义全局 v-highlight 命令 用于对 markdown 文档内部代码块进行高亮显示
-    .directive('highlight',el =>{
-        const blocks = el.querySelectorAll('pre code');
-        blocks.forEach((block : HTMLElement)=>{
-          hljs.highlightElement(block)
-        })
-    })
     .mount('#app')
 
 // 创建 v-highlight 全局指令

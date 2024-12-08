@@ -5,13 +5,25 @@ import mk from "@vscode/markdown-it-katex"
 import anchor from 'markdown-it-anchor';
 import MarkdownIt from 'markdown-it'
 import { ref } from "vue";
+import hljs from "highlight.js";
 
 import 算法资料 from '../docs/算法资料.md?raw'
 
 
 const markdownContent = ref('')
 const tocContent = ref('')
-const markdown = new MarkdownIt()
+// 生成 MarkDown
+const markdown = new MarkdownIt({
+  // 代码高亮 
+  highlight: (str: string, lang: string) => {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlightAuto(str, [lang]).value
+      } catch (_) { }
+    }
+    return ''
+  }
+})
   .use(mk, {
     throwOnError: false,
     errorColor: " #cc0000",
@@ -19,7 +31,7 @@ const markdown = new MarkdownIt()
   })
   .use(anchor, {
     permalink: true,
-    permalinkClass: 'direct-link',
+    permalinkClass: 'markdown-anchor-link',
     permalinkSymbol: '#',
     permalinkBefore: true,
   })
@@ -32,6 +44,7 @@ const markdown = new MarkdownIt()
       tocContent.value = html
     },
   })
+
 markdownContent.value = markdown.render(算法资料)
 </script>
 
@@ -42,7 +55,7 @@ markdownContent.value = markdown.render(算法资料)
     <div class="toc-container">
       <div v-html="tocContent" class="markdown-body type-toc"></div>
     </div>
-    <div v-html="markdownContent" v-highlight class="markdown-body type-body"></div>
+    <div v-html="markdownContent" class="markdown-body type-body"></div>
   </div>
   <!-- <div v-html="tocContent"></div> -->
 
@@ -79,8 +92,9 @@ markdownContent.value = markdown.render(算法资料)
     position: relative;
     top: 0;
     margin-right: 2rem;
+
     /* transform: translateX(calc(-100% - 4rem)); */
-    &::before{
+    &::before {
       content: '导航目录';
       margin-bottom: 0.5rem;
     }

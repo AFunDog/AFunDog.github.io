@@ -64,34 +64,3 @@ img {
   box-shadow: 0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.33);
 }
 
-/* 隐藏 Markdown 公式的原本内容 */
-.katex-html {
-  display: none;
-}
-
-.markdown-body {
-
-  /* Markdown 目录列表 */
-  .table-of-contents {
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 1rem;
-    max-width: 20rem;
-    max-height: 80vh;
-
-    .markdown-toc-list {
-      overflow: hidden;
-      padding-left: 1.2rem;
-
-      .markdown-toc-item {
-        color: #e67e22;
-
-        .markdown-toc-link {
-          color: var(--foreground-color);
-          white-space: nowrap;
-        }
-      }
-    }
-  }
-
-}

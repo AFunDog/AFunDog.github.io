@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import NavBar from './components/NavBar.vue'
+import CustomHeader from './components/CustomHeader.vue';
 import { useRouter } from 'vue-router';
 import BackgroundImage from './assets/background.png'
 
@@ -23,11 +24,11 @@ router.beforeEach((to, from) => {
   }
 })
 
-function onBeforeLeaved(){
+function onBeforeLeaved() {
   isBackgroundImageShow.value = false
 }
 
-function onAfterLeaved(){
+function onAfterLeaved() {
   isBackgroundImageShow.value = true
 }
 
@@ -36,11 +37,7 @@ function onAfterLeaved(){
 <template>
   <div>
 
-
-
-    <header>
-      {{ $route.meta.title as string }}
-    </header>
+    <CustomHeader :content="($route.meta.title as string)" />
 
     <NavBar :index="curIndex" />
     <!-- 导航页 -->
@@ -55,7 +52,7 @@ function onAfterLeaved(){
 
     </main>
     <!-- 展示末尾图片 -->
-    <div :class="[isBackgroundImageShow ? 'background-image-container' : 'background-image-container hide']" >
+    <div :class="[isBackgroundImageShow ? 'background-image-container' : 'background-image-container hide']">
       <img alt="剧终图" :src="BackgroundImage" />
     </div>
   </div>
@@ -72,7 +69,7 @@ function onAfterLeaved(){
     /* object-fit: cover; */
   }
 
-  &.hide{
+  &.hide {
     opacity: 0;
     transition: none;
   }
@@ -80,26 +77,7 @@ function onAfterLeaved(){
   transition:all 1s;
 }
 
-header {
-  margin-top: 1rem;
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.5rem;
 
-  user-select: none;
-}
-
-header::after {
-  display: block;
-
-  width: 96%;
-  height: 0.1rem;
-
-  margin: 0 auto;
-  margin-top: 0.25rem;
-  content: '';
-  background-color: rgba(255, 255, 255, 0.33);
-}
 
 .main-container {
   /* overflow-x: hidden; */
@@ -108,7 +86,7 @@ header::after {
   &>.view-container {
 
     .slide-left-enter-active,
-    .slide-left-leave-active, 
+    .slide-left-leave-active,
     .slide-right-enter-active,
     .slide-right-leave-active {
       position: absolute;
@@ -116,30 +94,36 @@ header::after {
       transition: transform .3s cubic-bezier(.215, .61, .355, 1);
     }
 
-    .slide-left-enter-active{
+    .slide-left-enter-active {
       left: -100%;
     }
+
     .slide-left-enter-to {
       transform: translateX(100%);
 
     }
-    .slide-left-leave-active{
-      left :0;
+
+    .slide-left-leave-active {
+      left: 0;
     }
+
     .slide-left-leave-to {
       transform: translateX(100%);
 
     }
-    .slide-right-enter-active{
+
+    .slide-right-enter-active {
       left: 100%;
     }
+
     .slide-right-enter-to {
       transform: translateX(-100%);
     }
 
-    .slide-right-leave-active{
+    .slide-right-leave-active {
       left: 0;
     }
+
     .slide-right-leave-to {
       transform: translateX(-100%);
     }
