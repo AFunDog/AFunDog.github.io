@@ -16,6 +16,7 @@
         </div>
       </div>
     </div> -->
+    <!-- <img class="caption-background-img" src="../assets/main_background.jpg" /> -->
     <div class="caption-desc">
       广阔天地 大有作为
     </div>
@@ -119,4 +120,5 @@
     font-size: calc(var(--caption-base-font-size) * 1.2);
   }
 }
+
 </style>

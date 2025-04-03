@@ -37,9 +37,17 @@ function onAfterLeaved() {
 <template>
   <div>
 
+    <img class="main-background-image" src="/src/assets/main_background.jpg" />
+    <div class="main-background-image-container" />
+
     <CustomHeader :content="($route.meta.title as string)" />
 
     <NavBar :index="curIndex" />
+    <!--     
+    <div class="top-background-image-container">
+      <img src="/src/assets/main_background.jpg" />
+    </div> -->
+
     <!-- 导航页 -->
     <main class="main-container">
       <div class="view-container">
@@ -59,6 +67,56 @@ function onAfterLeaved() {
 </template>
 
 <style scoped>
+.main-background-image-container {
+  position: fixed;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+
+  z-index: -1;
+
+
+  /* filter: saturate(); */
+
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
+
+
+  transition: all;
+}
+
+.main-background-image {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: -2;
+
+  transition: all;
+}
+
+/* .top-background-image-container{
+  width: 100%;
+  position: sticky;
+  top: 0;
+
+  z-index: -2;
+
+  &>img {
+    width: 100%;
+    position: absolute;
+  }
+}
+
+.top-background-image{
+
+} */
+
 .background-image-container {
   width: 100%;
 

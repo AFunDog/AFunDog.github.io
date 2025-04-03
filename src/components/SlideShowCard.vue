@@ -3,7 +3,8 @@
 import { ref } from 'vue';
 import card1 from '../assets/showcards/card1.png'
 import card2 from '../assets/showcards/card2.png'
-import card3 from '../assets/showcards/card3.png'
+// import card3 from '../assets/showcards/card3.png'
+import card4 from '../assets/showcards/card4.png'
 
 const cardSize = { width: 20, height: 30 }
 const cardSpace = 1
@@ -13,10 +14,10 @@ const showCardList = [
     url: card1, saying: '死亡不属于工人阶级', author: '列宁'
   },
   {
-    url: card2, saying: '世界是属于你们的', author: '毛主席'
+    url: card2, saying: '世界是属于你们的', author: '毛泽东'
   },
   {
-    url: card3, saying: '不能再后悔了 全力以赴', author: '鲁迪乌斯'
+    url: card4, saying: '全世界无产者，联合起来!', author: '马克思'
   },
 ]
 
@@ -41,7 +42,7 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
         <div @click="onCardClicked(index)" :class="[selectedIndex == index ? 'show-card selected' : 'show-card']">
           <img :src="card.url" :alt="card.saying" />
           <p class="show-card-saying">{{ card.saying }}</p>
-          <h4 class="show-card-author">—— {{ card.author }}</h4>
+          <h4 class="show-card-author">— {{ card.author }}</h4>
         </div>
       </div>
     </div>
@@ -152,7 +153,8 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
 
 .show-card-author {
   font-size: 2rem;
-
+  font-family: 'huangkai',system-ui;
+  
   line-height: 4rem;
   width: 100%;
   text-align: center;

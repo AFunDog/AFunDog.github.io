@@ -24,7 +24,8 @@ const props = withDefaults(defineProps<{ content: string }>(), { content: "" })
   justify-content: center;
   align-items: center;
 
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
+  padding-top: 1rem;
   text-align: center;
   font-weight: bold;
   font-size: 2.5rem;
@@ -50,7 +51,8 @@ const props = withDefaults(defineProps<{ content: string }>(), { content: "" })
   flex-direction: row;
   position: absolute;
 
-  margin-top: 0.75rem;
+  /* margin-top: 0.75rem; */
+  padding-top: 1.5rem;
   left: 2%;
 
   justify-content: left;
