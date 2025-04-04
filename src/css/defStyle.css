@@ -1,36 +1,52 @@
 /* 字体图标声明 */
-@font-face {
+/* @font-face {
   font-family: 'icomoon';
-  src: url('../../public/fonts/icomoon.eot?glgrsi');
-  src: url('..//public/fonts/icomoon.eot?glgrsi#iefix') format('embedded-opentype'),
-    url('../../public/fonts/icomoon.ttf?glgrsi') format('truetype'),
-    url('../../public/fonts/icomoon.woff?glgrsi') format('woff'),
-    url('../../public/fonts/icomoon.svg?glgrsi#icomoon') format('svg');
+  src: url('/fonts/icomoon.eot?glgrsi');
+  src: url('/fonts/icomoon.eot?glgrsi#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?glgrsi') format('truetype'),
+    url('/fonts/icomoon.woff?glgrsi') format('woff'),
+    url('/fonts/icomoon.svg?glgrsi#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
-}
+} */
 
 @font-face {
   font-family: 'huangkai';
-  src: url('../../public/fonts/huangkaihuaLawyerfont-2.ttf') format('truetype');
+  src: url('/fonts/huangkaihuaLawyerfont-2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
+@font-face {
+  font-family: '华文行楷';
+  src: url('/fonts/STXINGKA.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: '宋体';
+  src: url('/fonts/simsun.ttc') format('truetype');
+
+}
+
+
 :root {
 
-
+  /* 全局变量设置 */
   --foreground-color: rgba(255, 255, 255, 0.87);
   --background-color: #333333;
   --dark-control-color: #202020a8;
   --theme-color: #e67e22;
   --theme-dark-color: rgb(from var(--theme-color) r calc(g - 40) calc(b + 30));
 
-  min-width: 50rem;
+  /* min-width: 0em; */
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui,Inter, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -48,6 +64,33 @@
   scroll-padding-top: 1rem;
 }
 
+
+/* 主题样式调整 */
+/* 浅色主题 */
+@media (prefers-color-scheme: light) {
+  /* :root{
+    --foreground-color: rgba(0, 0, 0, 0.87);
+  }
+   */
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+/* 小屏幕调整样式尺寸 */
+@media screen and (max-width: 768px) {
+  :root {
+    /* 让字体元素大小适应屏幕 */
+    font-size: 2vw;
+    /* 
+      移动设备优化
+      https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-rendering#optimizespeed
+     */
+    text-rendering: optimizeSpeed;
+  }
+}
+
+
 * {
   color: var(--foreground-color);
   /* 清除所有元素初始的边距 */
@@ -58,21 +101,16 @@
 }
 
 body {
-  overflow-x: hidden; /* 隐藏水平滚动条 */
+  overflow-x: hidden;
+  /* 隐藏水平滚动条 */
 }
 
-.icon-font {
+/* .icon-font {
   font-family: 'icomoon';
-}
+} */
 
 
 img {
   /* 取消图片底侧有空白缝隙的问题 */
   vertical-align: middle;
 }
-
-
-.def-shadow {
-  box-shadow: 0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.33);
-}
-

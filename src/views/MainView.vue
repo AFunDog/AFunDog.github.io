@@ -2,7 +2,10 @@
 
 
 import CaptionBar from '../components/CaptionBar.vue';
-import SlideShowCard from '../components/SlideShowCard.vue';
+import InfoBar from '../components/InfoBar.vue';
+
+
+
 
 
 
@@ -11,17 +14,19 @@ import SlideShowCard from '../components/SlideShowCard.vue';
 <template>
   <div>
     <CaptionBar />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <SlideShowCard />
+
+    <div class="vspace"></div>
+
+    <InfoBar/>
+
+    <div class="vspace"></div>
 
   </div>
 </template>
 
 <style scoped>
+.vspace {
+  height: 5rem;
+}
+
 </style>

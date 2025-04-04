@@ -1,15 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import {  DefineComponent, provide, ref } from 'vue';
 import NavBar from './components/NavBar.vue'
 import CustomHeader from './components/CustomHeader.vue';
 import { useRouter } from 'vue-router';
-import BackgroundImage from './assets/background.png'
+import AppBackgroundImage from './assets/app_background.jpg'
+import AppLastImage from './assets/app_last.png'
+import SubNavBar from './components/SubNavBar.vue';
 
+
+
+// const globalProps = getCurrentInstance()?.appContext.config.globalProperties
+
+// const subNavBar = ref<HTMLElement | null>(null)
 const router = useRouter()
 const viewTransition = ref('')
 const curIndex = ref(0)
 
-const isBackgroundImageShow = ref(true)
+const isLeftNavBarShow = ref(false)
+const isLastImageShow = ref(true)
+const isInfoBorderShow = ref(true)
+
+provide('isInfoBorderShow', isInfoBorderShow)
+
+
 
 router.beforeEach((to, from) => {
   curIndex.value = to.meta.index as number
@@ -25,11 +38,23 @@ router.beforeEach((to, from) => {
 })
 
 function onBeforeLeaved() {
-  isBackgroundImageShow.value = false
+  isLastImageShow.value = false
 }
 
 function onAfterLeaved() {
-  isBackgroundImageShow.value = true
+  isLastImageShow.value = true
+}
+
+function onHeaderTitleClick() {
+  document.body.style.overflowY = document.body.style.overflowY == 'hidden' ? 'auto' : 'hidden'
+}
+
+function onHeaderIconClick() {
+  isInfoBorderShow.value = !isInfoBorderShow.value
+  // isLeftNavBarShow.value = !isLeftNavBarShow.value
+  // if (!isLeftNavBarShow.value) {
+  // console.log(subNavBar.value?.focus)
+  // }
 }
 
 </script>
@@ -37,16 +62,23 @@ function onAfterLeaved() {
 <template>
   <div>
 
-    <img class="main-background-image" src="/src/assets/main_background.jpg" />
-    <div class="main-background-image-container" />
+    <img class="main-background-image" :src="AppBackgroundImage" />
+    <div class="main-background-image-mask">
+    </div>
 
-    <CustomHeader :content="($route.meta.title as string)" />
+    <CustomHeader :icon="$route.meta.icon as DefineComponent" :content="($route.meta.title as string)" @header-title-click="onHeaderTitleClick"
+      @header-icon-click="onHeaderIconClick" />
 
     <NavBar :index="curIndex" />
     <!--     
     <div class="top-background-image-container">
       <img src="/src/assets/main_background.jpg" />
     </div> -->
+
+    <SubNavBar @focusin="isLeftNavBarShow = true" @focusout="isLeftNavBarShow = false" :is-show="isLeftNavBarShow"
+      :items="router.getRoutes().map(route => {
+        return { path: route.path, icon: route.meta.icon as DefineComponent, title: route.meta.title as string }
+      })" />
 
     <!-- 导航页 -->
     <main class="main-container">
@@ -60,14 +92,14 @@ function onAfterLeaved() {
 
     </main>
     <!-- 展示末尾图片 -->
-    <div :class="[isBackgroundImageShow ? 'background-image-container' : 'background-image-container hide']">
-      <img alt="剧终图" :src="BackgroundImage" />
+    <div :class="['last-image-container', { 'hide': !isLastImageShow }]">
+      <img alt="剧终图" :src="AppLastImage" />
     </div>
   </div>
 </template>
 
 <style scoped>
-.main-background-image-container {
+.main-background-image-mask {
   position: fixed;
   top: 0;
 
@@ -81,10 +113,11 @@ function onAfterLeaved() {
   /* filter: saturate(); */
 
   background-image:
-    radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)), radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
+    radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)),
+    radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
 
 
-  transition: all;
+  transition: all 1s;
 }
 
 .main-background-image {
@@ -93,38 +126,21 @@ function onAfterLeaved() {
   width: 100%;
   height: 100%;
 
+
   object-fit: cover;
 
   z-index: -2;
 
-  transition: all;
+  transition: all 1s;
 }
 
-/* .top-background-image-container{
-  width: 100%;
-  position: sticky;
-  top: 0;
-
-  z-index: -2;
-
-  &>img {
-    width: 100%;
-    position: absolute;
-  }
-}
-
-.top-background-image{
-
-} */
-
-.background-image-container {
+.last-image-container {
   width: 100%;
 
   z-index: -1;
 
   &>img {
     width: 100%;
-    /* object-fit: cover; */
   }
 
   &.hide {
@@ -132,7 +148,8 @@ function onAfterLeaved() {
     transition: none;
   }
 
-  transition:all 1s;
+  transition: all 1s;
+
 }
 
 

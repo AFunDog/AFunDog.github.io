@@ -118,9 +118,7 @@ markdownContent.value = markdown.render(算法资料)
     }
 
     &.type-body {
-
       padding: 1rem;
-
     }
   }
 }

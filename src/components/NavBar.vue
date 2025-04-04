@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import { DefineComponent } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
 
 
@@ -14,14 +15,18 @@ const router = useRouter()
 
 
 const navTopList = router.getRoutes()
-
 </script>
 
 <template>
   <nav class="nav-bar">
-    <RouterLink v-for="(item, index) in navTopList" :class="[props.index == index ? 'nav-item selected' : 'nav-item']"
+    <RouterLink v-for="(item, index) in navTopList" :class="['nav-item', { 'selected': props.index == index }]"
       :to="(item.path)">
-      {{ item.meta.title as string }}
+      <div class="nav-item-content">
+        <component :is="item.meta.icon as DefineComponent"/>
+        <div>
+          {{ item.meta.title as string }}
+        </div>
+      </div>
     </RouterLink>
   </nav>
 </template>
@@ -49,42 +54,20 @@ const navTopList = router.getRoutes()
 
   margin: 0 0.5rem;
 
-
-
-
-
   text-align: center;
   line-height: v-bind('itemSize.height + "rem"');
   width: v-bind('itemSize.width + "rem"');
   height: v-bind('itemSize.height + "rem"');
 
-  /* border-style: solid;
-  border-width: 0 0 0.1rem 0; */
-  line-height: v-bind('itemSize.height + "rem"');
-  width: v-bind('itemSize.width + "rem"');
-  height: v-bind('itemSize.height + "rem"');
-
-  /* border-style: solid;
-  border-width: 0 0 0.1rem 0; */
-
-  /* border-radius: 0.5rem; */
-
-  /* background-color: var(--dark-control-color); */
-  /* border-radius: 0.5rem; */
-
-  /* background-color: var(--dark-control-color); */
 
   user-select: none;
   transition: all .2s;
 
   &:hover,
   &.selected {
-    /* line-height: v-bind('itemSize.height * 1.04 + "rem"'); */
-    /* width: v-bind('itemSize.width * 1.04 + "rem"'); */
-    /* height: v-bind('itemSize.height * 1.04 + "rem"'); */
-    /* background-color: #d35400; */
     font-size: 1.2rem;
     color: var(--theme-color);
+
     &::after {
       margin-left: 0%;
       width: 100%;
@@ -94,6 +77,7 @@ const navTopList = router.getRoutes()
 
   }
 
+  /* 底部线 */
   &::after {
     display: block;
     content: '';
@@ -105,5 +89,16 @@ const navTopList = router.getRoutes()
 
     transition: all .2s;
   }
+}
+
+.nav-item-content{
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5rem;
 }
 </style>

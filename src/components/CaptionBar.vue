@@ -7,15 +7,6 @@
 <template>
 
   <div>
-    <!-- <div class="caption-outer-container">
-      <div class="caption-content-container">
-        <img class="caption-icon def-shadow" src="../assets/头像.png">
-        <div>
-          <p class="caption-name">曾 昆</p>
-          <p class="caption-name">AFunDog</p>
-        </div>
-      </div>
-    </div> -->
     <!-- <img class="caption-background-img" src="../assets/main_background.jpg" /> -->
     <div class="caption-desc">
       广阔天地 大有作为
@@ -49,7 +40,7 @@
 }
 
 
-.caption-content-container {
+/* .caption-content-container {
 
   display: flex;
   flex-direction: row;
@@ -74,22 +65,22 @@
     scale: 1.12;
   }
 
-}
+} */
 
-.caption-icon {
+/* .caption-icon {
   width: 8rem;
   height: 8rem;
 
   border-radius: 50%;
-}
+} */
 
-.caption-name {
+/* .caption-name {
 
   margin-left: 1rem;
 
   font-size: 2rem;
   font-weight: bold;
-}
+}  */
 
 .caption-desc {
 
