@@ -88,18 +88,18 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
   height: v-bind('cardSize.height + "rem"');
   margin: 1rem v-bind('cardSpace + "rem"');
 
-  border-radius: 0.5rem;
+  border-radius: var(--global-border-radius);
 
 
   box-sizing: content-box;
   border-color: transparent;
 
 
-  background-color: var(--dark-control-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 33%);
 
   align-items: center;
 
-  box-shadow: 0.2rem 0.2rem 0.4rem 0.2rem rgb(from var(--dark-control-color) r g b / .33);
+  box-shadow: 0.2rem 0.2rem 0.4rem 0.2rem color-mix(in srgb, var(--background-color), transparent 66%);
 
   transition: all .2s;
 

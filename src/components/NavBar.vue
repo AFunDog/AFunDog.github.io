@@ -45,11 +45,13 @@ const navTopList = router.getRoutes()
   justify-content: center;
   align-items: center;
 
+  color: var(--white-color);
+  
+
   /* background-color: aliceblue; */
 }
 
 .nav-item {
-  text-decoration: none;
   cursor: pointer;
 
   margin: 0 0.5rem;
@@ -85,8 +87,8 @@ const navTopList = router.getRoutes()
     margin-left: 30%;
     width: 40%;
     height: 0.1rem;
-    background-color: var(--foreground-color);
-
+   
+    background-color: var(--white-color);
     transition: all .2s;
   }
 }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { inject, ref } from 'vue';
 import GithubIcon from '../assets/icons/GithubIcon.vue'
-import HugeiconsInternetIcon from '../assets/icons/HugeiconsInternetIcon.vue';
 
 
 const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
@@ -34,16 +33,22 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
               <div>GitHub</div>
             </a>
           </div>
-          <div class="link-info-button-container">
-            <a class="link-info-button-border">
+          <!-- <div class="link-info-button-container">
+            <a href="https://zengkun.me" class="link-info-button-border">
               <HugeiconsInternetIcon class="link-info-button-icon"/>
               <div>我的网站</div>
             </a>
-          </div>
+          </div> -->
 
         </div>
         <div class="desc-info-container">
-          
+          <div style="font-style: italic !important;font-size: 1.2em;">
+            一个喜欢做全栈开发和游戏的程序员
+          </div>
+          <br />
+          ✨ 想要完成一套自己的全栈生态
+          <br />
+          ✨ 想要制作一个属于自己的游戏
         </div>
       </div>
     </div>
@@ -79,7 +84,7 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
 
   overflow: hidden;
 
-  border-radius: 0.5em;
+  border-radius: var(--global-border-radius);
 
   scale: 0;
 
@@ -158,17 +163,7 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
 
 }
 
-.acrylic {
 
-  background-color: color-mix(in srgb, var(--background-color), transparent 40%);
-  /* 半透明背景 */
-  backdrop-filter: blur(1.5em);
-  /* 背景模糊 */
-  border: 1px solid rgba(16, 16, 16, 0.2);
-  /* 边框增强效果 */
-  box-shadow: 0 0.25em 0.5em 0.2em rgba(0, 0, 0, 0.1);
-  /* 阴影增强层次感 */
-}
 
 .link-info-button-container {
   display: flex;
@@ -194,7 +189,7 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   background-color: var(--background-color);
   
 
-  border-radius: 0.5em;
+  border-radius: var(--global-border-radius);
 
   cursor: pointer;
   transition: all .1s;
@@ -213,8 +208,11 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
 }
 
 .desc-info-container {
-  
+  display: flex;
 
+  flex-direction: column;
+
+  align-items: center;
 }
 
 </style>

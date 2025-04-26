@@ -19,7 +19,9 @@ import ShowView from './views/ShowView.vue'
 // import CppAlgorithmView from './views/CppAlgorithmView.vue'
 // import OtherView from './views/OtherView.vue'
 import LibraryView from './views/LibraryView.vue'
-import FluentPeopleHomeIcon from './assets/icons/FluentPeopleHomeIcon.vue'
+import FluentPeopleHomeIcon from './assets/icons/FluentColorPeopleHomeIcon.vue'
+import FluentColorLightBulbIcon from './assets/icons/FluentColorLightBulbIcon.vue'
+import FluentColorBookDatabaseIcon from './assets/icons/FluentColorBookDatabaseIcon.vue'
 
 // const routes: Readonly<RouteRecordRaw[]> = [
 //     { path: '/', component: MainView, meta: { index: 0, label: '主页', title: '我的主页' } },
@@ -36,8 +38,8 @@ const router = createRouter({
     history: createMemoryHistory(),
     routes: [
         { path: '/', component: MainView, meta: { icon: FluentPeopleHomeIcon, title: '我的主页' } },
-        { path: '/Show', component: ShowView, meta: { title: '展示' } },
-        { path: '/Library', component: LibraryView, meta: { title: '资料' } },
+        { path: '/Show', component: ShowView, meta: { icon : FluentColorLightBulbIcon, title: '展示' } },
+        { path: '/Library', component: LibraryView, meta: {icon: FluentColorBookDatabaseIcon, title: '资料' } },
     ]
 })
 // 重新设置路由的索引

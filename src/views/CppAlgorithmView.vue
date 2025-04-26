@@ -53,9 +53,9 @@ markdownContent.value = markdown.render(算法资料)
   <div class="markdown-container">
     <!-- 导航目录 -->
     <div class="toc-container">
-      <div v-html="tocContent" class="markdown-body type-toc"></div>
+      <div v-html="tocContent" class="markdown-body type-toc acrylic"></div>
     </div>
-    <div v-html="markdownContent" class="markdown-body type-body"></div>
+    <div v-html="markdownContent" class="markdown-body acrylic type-body"></div>
   </div>
   <!-- <div v-html="tocContent"></div> -->
 
@@ -85,8 +85,11 @@ markdownContent.value = markdown.render(算法资料)
   /* background-color: transparent; */
   font-size: 1.2rem;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: var(--global-border-radius);
   box-sizing: border-box;
+
+  background-color: color-mix(in srgb, var(--background-color), transparent 20%);
+  /* backdrop-filter: blur(0.5rem); */
 
   &.type-toc {
     position: relative;
@@ -105,6 +108,9 @@ markdownContent.value = markdown.render(算法资料)
     padding: 3rem;
     min-width: 15rem;
     max-width: 65rem;
+
+    /* background-color: ; */
+
 
   }
 }

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {  DefineComponent, provide, ref } from 'vue';
+import {  DefineComponent, provide, ref, watch } from 'vue';
 import NavBar from './components/NavBar.vue'
 import CustomHeader from './components/CustomHeader.vue';
 import { useRouter } from 'vue-router';
 import AppBackgroundImage from './assets/app_background.jpg'
 import AppLastImage from './assets/app_last.png'
-import SubNavBar from './components/SubNavBar.vue';
+import SubNavBar from './components/LeftNavBar.vue';
 
 
 
@@ -20,9 +20,23 @@ const isLeftNavBarShow = ref(false)
 const isLastImageShow = ref(true)
 const isInfoBorderShow = ref(true)
 
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+const isDarkMode = ref(mediaQuery.matches)
+// 监听主题颜色发生改变
+mediaQuery.addEventListener('change', (e) => {
+  isDarkMode.value = e.matches
+  console.debug("主题发生变化 Dark",e.matches)
+})
+watch(isDarkMode,(value) =>{
+  document.documentElement.classList.toggle('light', !value)
+})
+
 provide('isInfoBorderShow', isInfoBorderShow)
+provide('isDarkMode', isDarkMode)
 
-
+// watchEffect(() =>{
+//   console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
+// })
 
 router.beforeEach((to, from) => {
   curIndex.value = to.meta.index as number

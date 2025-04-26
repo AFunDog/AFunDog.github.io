@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { DefineComponent } from 'vue';
+import { DefineComponent, inject, ref } from 'vue';
+import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
+import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
 
 // import { getCurrentInstance } from 'vue';
 
@@ -12,6 +14,8 @@ const props = withDefaults(defineProps<{
 })
 
 const emits = defineEmits<{ (e: 'headerTitleClick'): void, (e: 'headerIconClick'): void }>()
+
+const isDarkMode = inject('isDarkMode', ref(true))
 
 function onHeaderTitleClick() {
   emits('headerTitleClick')
@@ -26,21 +30,30 @@ function onHeaderIconClick() {
 </script>
 
 <template>
-  <div class="header-bottom-line">
-    <div class="header-icon-container" @click="onHeaderIconClick">
-      <img class="header-icon" src="../assets/头像.png" />
-      <p class="caption-name">曾昆</p>
-    </div>
-    <header class="header-container">
-      <div class="header-title-container" @click="onHeaderTitleClick">
-        <component class="header-title-icon" :is="props.icon as DefineComponent"></component>
-        <div class="header-title">{{ props.content }}</div>
+  <div class="header-root header-bottom-line">
+    <div style="display: grid;grid-template-columns: 1fr auto 1fr;place-items: center;">
+      <div class="header-icon-container" @click="onHeaderIconClick">
+        <img class="header-icon" src="../assets/头像.png" />
+        <p class="caption-name">曾昆</p>
       </div>
-    </header>
+      <header class="header-container">
+        <div class="header-title-container" @click="onHeaderTitleClick">
+          <component class="header-title-icon" :is="props.icon as DefineComponent"></component>
+          <div class="header-title">{{ props.content }}</div>
+        </div>
+      </header>
+      <div class="change-theme-container">
+        <component @click="isDarkMode = !isDarkMode" class="change-theme-icon" :is="isDarkMode ? LineMdSunnyOutlineToMoonTransitionIcon : LineMdMoonToSunnyOutlineTransitionIcon"/>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.header-root {
+  color: var(--white-color);
+}
+
 .header-container {
   display: flex;
 
@@ -83,11 +96,15 @@ function onHeaderIconClick() {
 .header-icon-container {
   display: flex;
   flex-direction: row;
-  position: absolute;
+
+  justify-self:flex-start;
+  /* position: absolute; */
 
   /* margin-top: 0.75rem; */
-  padding-top: 1.5rem;
-  left: 2%;
+  /* padding-top: 1.5rem; */
+  /* left: 2%; */
+
+  margin-left: 3em;
 
   justify-content: left;
   align-items: center;
@@ -108,6 +125,7 @@ function onHeaderIconClick() {
   width: 2.5rem;
   height: 2.5rem;
 
+  /* 让头像圆形展示 */
   border-radius: 50%;
 
   box-shadow: 0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.33);
@@ -139,5 +157,18 @@ function onHeaderIconClick() {
 .header-title-icon {
   height: 1em;
   width: 1em;
+}
+
+.change-theme-container{
+  justify-self: flex-end;
+
+  margin-right: 3em;
+}
+
+.change-theme-icon {
+  width: 2em;
+  height: 2em;
+
+  cursor: pointer;
 }
 </style>
