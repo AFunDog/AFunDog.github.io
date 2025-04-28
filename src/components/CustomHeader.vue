@@ -52,6 +52,9 @@ function onHeaderIconClick() {
 <style scoped>
 .header-root {
   color: var(--white-color);
+
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .header-container {
@@ -65,10 +68,10 @@ function onHeaderIconClick() {
   align-items: center;
 
   /* margin-top: 1rem; */
-  padding-top: 1rem;
+  /* padding-top: 1em; */
   text-align: center;
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 2em;
 
   user-select: none;
 

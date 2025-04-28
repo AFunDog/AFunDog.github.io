@@ -16,7 +16,7 @@ const pcState = ref<{
 // 调用后台接口获取PC状态
 function getPcState() {
   isGettingPcState.value = true
-  axios.get('http://localhost/api/pc-state').then(res => {
+  axios.get('/api/pc-state').then(res => {
     pcState.value = res.data
     // 如果获取到的内存总量大于0，则表示获取成功
     if (pcState.value.memTotal > 0)

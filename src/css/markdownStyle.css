@@ -28,22 +28,28 @@
     }
   }
 
-  a {
-    color: var(--theme-color);
-
-  }
-
   .markdown-anchor-link {
     display: inline-block;
     width: 0;
     opacity: 0;
     transition: all .2s;
-
+    
+    color: var(--theme-color);
+    text-decoration: none !important;
   }
-  
+
+  /* .markdown-anchor-link {
+    color: var(--foreground-color);
+    text-decoration: none;
+
+    &:hover{
+      text-decoration: none;
+    }
+  } */
+
   /* 包含Markdown链接的元素（标题）被悬浮后让链接显现 */
   *:has(.markdown-anchor-link):hover .markdown-anchor-link {
-    width: 0.6em;
+    width: 1.5em;
     opacity: 1;
   }
 }

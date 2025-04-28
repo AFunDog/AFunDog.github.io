@@ -29,11 +29,21 @@ const markdown = new MarkdownIt({
     errorColor: " #cc0000",
     displayMode: true,
   })
-  .use(anchor, {
-    permalink: true,
-    permalinkClass: 'markdown-anchor-link',
-    permalinkSymbol: '#',
-    permalinkBefore: true,
+  // .use(anchor, {
+  //   permalink: true,
+  //   permalinkClass: 'markdown-anchor-link',
+  //   permalinkSymbol: '#',
+  //   permalinkBefore: true,
+  // })
+  .use(anchor,{
+    permalink : anchor.permalink.linkInsideHeader(
+      {
+        space : false,
+        class : 'markdown-anchor-link',
+        symbol: '🔗',
+        placement: 'before',
+      }
+    ),
   })
   .use(markdownItTocDoneRight, {
     listClass: 'markdown-toc-list',
@@ -69,6 +79,7 @@ markdownContent.value = markdown.render(算法资料)
   /* align-items: center; */
   margin: 2rem;
 
+  color: var(--foreground-color);
 }
 
 .toc-container {
@@ -87,6 +98,8 @@ markdownContent.value = markdown.render(算法资料)
   padding: 1rem;
   border-radius: var(--global-border-radius);
   box-sizing: border-box;
+
+  color: var(--foreground-color);
 
   background-color: color-mix(in srgb, var(--background-color), transparent 20%);
   /* backdrop-filter: blur(0.5rem); */

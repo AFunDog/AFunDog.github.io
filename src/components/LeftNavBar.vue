@@ -62,7 +62,7 @@ watch(() => props.isShow, (value) => {
 
 .border {
 
-  --border-width: 16em;
+  --border-width: 12em;
   --border-height: 30em;
   
   --border-hide-width: 1.5em;

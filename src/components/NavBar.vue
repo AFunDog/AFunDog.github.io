@@ -22,7 +22,7 @@ const navTopList = router.getRoutes()
     <RouterLink v-for="(item, index) in navTopList" :class="['nav-item', { 'selected': props.index == index }]"
       :to="(item.path)">
       <div class="nav-item-content">
-        <component :is="item.meta.icon as DefineComponent"/>
+        <component class="nav-item-icon" :is="item.meta.icon as DefineComponent"/>
         <div>
           {{ item.meta.title as string }}
         </div>
@@ -102,5 +102,10 @@ const navTopList = router.getRoutes()
   align-items: center;
 
   gap: 0.5rem;
+}
+
+.nav-item-icon {
+  width: 1.5em;
+  height: 1.5em;
 }
 </style>
