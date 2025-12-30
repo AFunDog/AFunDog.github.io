@@ -5,7 +5,7 @@ import CppAlgorithmView from './CppAlgorithmView.vue';
 
 <template>
 <div>
-  <CppAlgorithmView />
+  <!-- <CppAlgorithmView /> -->
 </div>
 </template>
 

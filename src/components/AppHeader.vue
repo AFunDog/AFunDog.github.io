@@ -2,24 +2,25 @@
 import { DefineComponent, inject, ref } from 'vue';
 import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
 import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
+import NavBar from './NavBar.vue';
 
 // import { getCurrentInstance } from 'vue';
 
 
-const props = withDefaults(defineProps<{
-  content: string,
-  icon?: DefineComponent | null
-}>(), {
-  content: ""
-})
+// const props = withDefaults(defineProps<{
+//   content: string,
+//   icon?: DefineComponent | null
+// }>(), {
+//   content: ""
+// })
 
 const emits = defineEmits<{ (e: 'headerTitleClick'): void, (e: 'headerIconClick'): void }>()
 
 const isDarkMode = inject('isDarkMode', ref(true))
 
-function onHeaderTitleClick() {
-  emits('headerTitleClick')
-}
+// function onHeaderTitleClick() {
+//   emits('headerTitleClick')
+// }
 
 function onHeaderIconClick() {
   emits('headerIconClick')
@@ -37,10 +38,12 @@ function onHeaderIconClick() {
         <p class="caption-name">曾昆</p>
       </div>
       <header class="header-container">
-        <div class="header-title-container" @click="onHeaderTitleClick">
+        <!-- <div class="header-title-container" @click="onHeaderTitleClick">
           <component class="header-title-icon" :is="props.icon as DefineComponent"></component>
           <div class="header-title">{{ props.content }}</div>
-        </div>
+        </div> -->
+
+        <NavBar :index="0"/>
       </header>
       <div class="change-theme-container">
         <component @click="isDarkMode = !isDarkMode" class="change-theme-icon" :is="isDarkMode ? LineMdSunnyOutlineToMoonTransitionIcon : LineMdMoonToSunnyOutlineTransitionIcon"/>
@@ -71,7 +74,10 @@ function onHeaderIconClick() {
   /* padding-top: 1em; */
   text-align: center;
   font-weight: bold;
-  font-size: 2em;
+  /* font-size: 2em; */
+
+  /* margin-top: 0.5em; */
+  /* margin-bottom: 1em; */
 
   user-select: none;
 

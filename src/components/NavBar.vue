@@ -19,7 +19,7 @@ const navTopList = router.getRoutes()
 
 <template>
   <nav class="nav-bar">
-    <RouterLink v-for="(item, index) in navTopList" :class="['nav-item', { 'selected': props.index == index }]"
+    <RouterLink v-for="(item, index) in navTopList" :class="['nav-item', { 'selected': router.currentRoute.value.path === item.path }]"
       :to="(item.path)">
       <div class="nav-item-content">
         <component class="nav-item-icon" :is="item.meta.icon as DefineComponent"/>
@@ -33,13 +33,9 @@ const navTopList = router.getRoutes()
 
 <style scoped>
 .nav-bar {
-  position: relative;
   display: flex;
 
-  left: 5%;
-  width: 90%;
   height: v-bind('itemSize.height * 1.1 + "rem"');
-  margin-top: 1rem;
 
   list-style: none;
   justify-content: center;
@@ -54,7 +50,7 @@ const navTopList = router.getRoutes()
 .nav-item {
   cursor: pointer;
 
-  margin: 0 0.5rem;
+  margin: 0 0.5em;
 
   text-align: center;
   line-height: v-bind('itemSize.height + "rem"');
@@ -67,7 +63,7 @@ const navTopList = router.getRoutes()
 
   &:hover,
   &.selected {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     color: var(--theme-color);
 
     &::after {
@@ -101,7 +97,7 @@ const navTopList = router.getRoutes()
   justify-content: center;
   align-items: center;
 
-  gap: 0.5rem;
+  gap: 0.5em;
 }
 
 .nav-item-icon {

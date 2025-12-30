@@ -5,21 +5,27 @@ import card1 from '../assets/showcards/card1.png'
 import card2 from '../assets/showcards/card2.png'
 // import card3 from '../assets/showcards/card3.png'
 import card4 from '../assets/showcards/card4.png'
+import { cn } from '../lib/tools';
 
 const cardSize = { width: 20, height: 30 }
 const cardSpace = 1
 
-const showCardList = [
-  {
-    url: card1, saying: '死亡不属于工人阶级', author: '列宁'
-  },
-  {
-    url: card2, saying: '世界是属于你们的', author: '毛泽东'
-  },
-  {
-    url: card4, saying: '全世界无产者，联合起来!', author: '马克思'
-  },
-]
+// const showCardList = [
+//   {
+//     url: card1, saying: '死亡不属于工人阶级', author: '列宁'
+//   },
+//   {
+//     url: card2, saying: '世界是属于你们的', author: '毛泽东'
+//   },
+//   {
+//     url: card4, saying: '全世界无产者，联合起来!', author: '马克思'
+//   },
+// ]
+
+const props = withDefaults(defineProps<{
+  title?: string
+  items?: { url: string, saying: string, author: string }[]
+}>(), {})
 
 const selectedIndex = ref(0)
 
@@ -29,17 +35,23 @@ function onCardClicked(index: number) {
 
 
 // 默认选择中间的
-selectedIndex.value = Math.floor(showCardList.length / 2)
+selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
 
 // onSelectedIndexChanged(selectedIndex.value,selectedIndex.value)
 
 </script>
 
 <template>
-  <div class="slideshow-shell">
-    <div class="slideshow-container">
-      <div class="slideshow-image-container" v-for="(card, index) in showCardList">
-        <div @click="onCardClicked(index)" :class="[selectedIndex == index ? 'show-card selected' : 'show-card']">
+  <div class="root w-full flex flex-col justify-center align-center">
+    <div class="m-[0_auto] text-6xl font-['huangkai',system-ui]">
+      {{ title }}
+    </div>
+    <div class="w-full overflow-hidden">
+      <div
+      class="flex relative justify-center m-[0_auto] transform-(--slide-container-transform) items-center h-(--slide-container-height) transition-all duration-200">
+      
+      <div class="block" v-for="(card, index) in props.items">
+        <div @click="onCardClicked(index)" :class="cn('show-card', [selectedIndex == index ? 'selected' : ''])">
           <img :src="card.url" :alt="card.saying" />
           <p class="show-card-saying">{{ card.saying }}</p>
           <h4 class="show-card-author">— {{ card.author }}</h4>
@@ -47,36 +59,15 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
-.slideshow-shell {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-
-}
-
-.slideshow-container {
-  display: flex;
-  position: relative;
-
-  justify-content: center;
-  margin: 0 auto;
-  transform: translateX(calc(v-bind('(cardSize.width + cardSpace * 2) * ((showCardList.length - 1) / 2 - selectedIndex) + "rem"')));
-
-  height: v-bind('cardSize.height * 1.2 + 4 + "rem"');
-
-  align-items: center;
-
-  transition: all .2s;
-}
-
-.slideshow-image-container {
-  display: block;
-}
-.slideshow-image-container {
-  display: block;
+.root {
+  /* 容器的偏移位置 根据选中项偏移 */
+  --slide-container-transform: translateX(calc(v-bind('(cardSize.width + cardSpace * 2) * (((props.items?.length ?? 0) - 1) / 2 - selectedIndex) + "rem"')));
+  /* 容器高度 防止容器高度改变时产生抖动 */
+  --slide-container-height: v-bind('cardSize.height * 1.2 + 4 + "rem"');
 }
 
 .show-card {
@@ -153,8 +144,8 @@ selectedIndex.value = Math.floor(showCardList.length / 2)
 
 .show-card-author {
   font-size: 2rem;
-  font-family: 'huangkai',system-ui;
-  
+  font-family: 'huangkai', system-ui;
+
   line-height: 4rem;
   width: 100%;
   text-align: center;

@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
 
 
 import './css/defStyle.css'
 // github markdown 格式
-import 'github-markdown-css'
+// import 'github-markdown-css'
 // 从定义 markdown 格式
 import './css/markdownStyle.css'
 // 代码高亮
@@ -35,7 +35,7 @@ import FluentColorBookDatabaseIcon from './assets/icons/FluentColorBookDatabaseI
 // ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes: [
         { path: '/', component: MainView, meta: { icon: FluentPeopleHomeIcon, title: '我的主页' } },
         { path: '/Show', component: ShowView, meta: { icon : FluentColorLightBulbIcon, title: '展示' } },

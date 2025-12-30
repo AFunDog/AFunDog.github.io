@@ -21,11 +21,11 @@ watch(() => props.isShow, (value) => {
 
 <template>
   <div tabindex="0" class="container">
-    <div :class="['border acrylic', { 'show': props.isShow }]">
+    <div :class="['nav-border acrylic', { 'show': props.isShow }]">
       <div class="sub-link-container">
         <RouterLink v-for="(item) in props.items" :to="item.path" class="sub-link">
           <component :is="item.icon"></component>
-          <div>
+          <div class="font-bold">
             {{ item.title }}
           </div>
         </RouterLink>
@@ -60,7 +60,7 @@ watch(() => props.isShow, (value) => {
   pointer-events: none;
 }
 
-.border {
+.nav-border {
 
   --border-width: 12em;
   --border-height: 30em;

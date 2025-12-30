@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* 字体图标声明 */
 /* @font-face {
   font-family: 'icomoon';
@@ -44,14 +46,17 @@
 
   /* 全局样式设置 默认为 dark */
   --foreground-color: var(--white-color);
-  --foreground-alt-color: color-mix(in srgb, var(--foreground-color), black 10%);
+  --foreground-color-10: color-mix(in srgb, var(--foreground-color), var(--background-color) 10%);
 
   --background-color: var(--black-color);
-  --background-alt-color: color-mix(in srgb, var(--background-color), black 10%);
+  --background-color-10: color-mix(in srgb, var(--background-color),  var(--foreground-color) 10%);
   /* --dark-control-color: #202020a8; */
   --theme-dark-color: color-mix(in srgb, var(--theme-color), black 10%);
 
-  --global-border-radius: 0.5em;
+  --global-border-radius: 0.25em;
+  --global-border-radius-2: 0.5em;
+  --global-border-radius-3: 0.75em;
+  --global-border-radius-4: 1em;
 
   /* min-width: 0em; */
 
@@ -102,18 +107,6 @@
 }
 
 
-* {
-  /* color: var(--foreground-color); */
-  /* 清除所有元素初始的边距 */
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-
-  /* 当使用的字体缺少粗体或斜体版本时，允许浏览器同时合成粗体和斜体样式 */
-  /* font-synthesis: style weight; */
-}
-
 body {
   /* 
     隐藏水平滚动条 
@@ -132,11 +125,11 @@ img {
 
   background-color: color-mix(in srgb, var(--background-color), transparent 60%);
   /* 半透明背景 */
-  backdrop-filter: blur(1em);
+  backdrop-filter: blur(1rem);
   /* 背景模糊 */
   /* border: 1px solid rgba(16, 16, 16, 0.2); */
   /* 边框增强效果 */
-  box-shadow: 0 0.25em 0.5em 0.2em rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.5rem 0.2rem rgba(0, 0, 0, 0.1);
   /* 阴影增强层次感 */
 }
 

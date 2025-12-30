@@ -13,11 +13,12 @@ import InfoBar from '../components/InfoBar.vue';
 
 <template>
   <div>
-    <CaptionBar />
-
     <div class="vspace"></div>
-
     <InfoBar/>
+    
+    <div class="vspace"></div>
+    
+    <CaptionBar />
 
     <div class="vspace"></div>
 

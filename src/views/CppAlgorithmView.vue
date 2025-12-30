@@ -7,7 +7,7 @@ import MarkdownIt from 'markdown-it'
 import { ref } from "vue";
 import hljs from "highlight.js";
 
-import 算法资料 from '../docs/算法资料.md?raw'
+// import 算法资料 from '../docs/算法资料.md?raw'
 
 
 const markdownContent = ref('')
@@ -55,7 +55,7 @@ const markdown = new MarkdownIt({
     },
   })
 
-markdownContent.value = markdown.render(算法资料)
+// markdownContent.value = markdown.render(算法资料)
 </script>
 
 <template>

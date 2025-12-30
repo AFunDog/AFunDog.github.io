@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {  DefineComponent, provide, ref, watch } from 'vue';
+import { DefineComponent, provide, ref, watch } from 'vue';
 import NavBar from './components/NavBar.vue'
-import CustomHeader from './components/CustomHeader.vue';
+import CustomHeader from './components/AppHeader.vue';
 import { useRouter } from 'vue-router';
 import AppBackgroundImage from './assets/app_background.jpg'
 import AppLastImage from './assets/app_last.png'
@@ -13,6 +13,7 @@ import SubNavBar from './components/LeftNavBar.vue';
 
 // const subNavBar = ref<HTMLElement | null>(null)
 const router = useRouter()
+
 const viewTransition = ref('')
 const curIndex = ref(0)
 
@@ -25,9 +26,9 @@ const isDarkMode = ref(mediaQuery.matches)
 // 监听主题颜色发生改变
 mediaQuery.addEventListener('change', (e) => {
   isDarkMode.value = e.matches
-  console.debug("主题发生变化 Dark",e.matches)
+  console.debug("主题发生变化 Dark", e.matches)
 })
-watch(isDarkMode,(value) =>{
+watch(isDarkMode, (value) => {
   document.documentElement.classList.toggle('light', !value)
 })
 
@@ -76,17 +77,21 @@ function onHeaderIconClick() {
 <template>
   <div>
 
-    <img class="main-background-image" :src="AppBackgroundImage" />
-    <div class="main-background-image-mask">
+    <img class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
+    <div class="fixed top-0 w-full h-full -z-10 main-background-image-mask">
     </div>
 
-    <CustomHeader :icon="$route.meta.icon as DefineComponent" :content="($route.meta.title as string)" @header-title-click="onHeaderTitleClick"
-      @header-icon-click="onHeaderIconClick" />
+    <CustomHeader :icon="($route.meta.icon as DefineComponent)" :content="($route.meta.title as string)"
+      @header-title-click="onHeaderTitleClick" @header-icon-click="onHeaderIconClick" />
 
-    <NavBar :index="curIndex" />
     <!--     
     <div class="top-background-image-container">
       <img src="/src/assets/main_background.jpg" />
+    </div> -->
+
+    <!-- <div class="header-title-container" @click="onHeaderTitleClick">
+      <component class="header-title-icon" :is="(router.currentRoute.value.meta.icon as DefineComponent)"></component>
+      <div class="header-title">{{ router.currentRoute.value.meta.title }}</div>
     </div> -->
 
     <SubNavBar @focusin="isLeftNavBarShow = true" @focusout="isLeftNavBarShow = false" :is-show="isLeftNavBarShow"
@@ -114,38 +119,10 @@ function onHeaderIconClick() {
 
 <style scoped>
 .main-background-image-mask {
-  position: fixed;
-  top: 0;
-
-  width: 100%;
-  height: 100%;
-
-
-  z-index: -1;
-
-
-  /* filter: saturate(); */
 
   background-image:
     radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)),
     radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
-
-
-  transition: all 1s;
-}
-
-.main-background-image {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-
-
-  object-fit: cover;
-
-  z-index: -2;
-
-  transition: all 1s;
 }
 
 .last-image-container {
@@ -218,5 +195,28 @@ function onHeaderIconClick() {
     }
 
   }
+}
+
+.header-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+
+  margin-top: 1em;
+  /* font-family: sans-serif; */
+
+  font-size: 2em;
+  font-weight: bold;
+
+  cursor: pointer;
+  gap: 0.5em;
+}
+
+/* 顶部标题图标 */
+.header-title-icon {
+  height: 1.5em;
+  width: 1.5em;
 }
 </style>
