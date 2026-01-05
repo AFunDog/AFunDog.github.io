@@ -2,6 +2,8 @@
 import { inject, ref } from 'vue';
 import GithubIcon from '../assets/icons/GithubIcon.vue'
 import { cn } from '../lib/tools';
+import OutsideWebLinkButton from './OutsideWebLinkButton.vue';
+import BiliBiliIcon from '../assets/icons/BiliBiliIcon.vue';
 
 
 const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
@@ -11,40 +13,44 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   <div>
     <div class="flex justify-center items-center">
       <div
-        :class="cn('flex justify-center items-center border-animation max-w-200 rounded-(--global-border-radius-4)', [isInfoBorderShow ? 'w-4/5 scale-100 h-50' : 'w-0 h-0 scale-0'])">
-        <div :class="cn('info-border acrylic h-full w-full')">
-          <!-- <div class="github-info-container">
-            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=AFunDog&locale=cn&layout=donut&theme=codeSTACKr"/>
-            <img src="https://github-readme-stats.vercel.app/api?username=AFunDog&locale=cn&show_icons=true&theme=codeSTACKr"/>
-        </div> -->
-
-          <div class="flex flex-row ml-8 mr-4 justify-start items-center">
-            <img class="w-32 h-32 rounded-[50%] shadow-[0_0_0.25rem_0.25rem_rgba(0,0,0,0.33)]" src="../assets/头像.png" />
-          </div>
-          <div class="link-info-container">
-            <div class="my-name-container">
-              <div>
-                曾昆
-              </div>
-              <div>
-                AFunDog
-              </div>
+        :class="cn('flex justify-center items-center border-animation max-w-200 rounded-(--global-border-radius-4)', [isInfoBorderShow ? 'w-4/5 scale-100 h-100' : 'w-0 h-0 scale-0'])">
+        <div
+          :class="cn('flex flex-row justify-evenly items-center acrylic h-full w-full rounded-(--global-border-radius-4) p-4')">
+          <div class="flex flex-col justify-center items-center gap-y-2">
+            <!-- 头像 -->
+            <div class="flex flex-row justify-start items-center">
+              <img class="w-32 h-32 rounded-[50%] shadow-[0_0_0.25rem_0.25rem_rgba(0,0,0,0.33)]"
+                src="../assets/头像.png" />
             </div>
-            <div class="link-info-button-container">
-              <a href="https://github.com/AFunDog" class="link-info-button-border">
-                <GithubIcon class="link-info-button-icon" />
-                <div>GitHub</div>
-              </a>
+
+            <!-- 关于我 -->
+            <div class="flex flex-col justify-center items-center gap-4">
+              <div class="flex flex-col items-center">
+                <div class="text-2xl font-bold tracking-[0.25rem] no-underline">
+                  曾昆
+                </div>
+                <div>
+                  AFunDog
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-y-2 *:select-none">
+                <!-- GitHub -->
+                <OutsideWebLinkButton title="Github" link="https://github.com/AFunDog">
+                  <GithubIcon class="size-6" />
+                </OutsideWebLinkButton>
+                <!-- B站 -->
+                <OutsideWebLinkButton title="哔哩哔哩" link="https://space.bilibili.com/102505755" class="bg-pink-500">
+                  <BiliBiliIcon class="size-6" />
+                </OutsideWebLinkButton>
+              </div>
+
+
             </div>
-            <!-- <div class="link-info-button-container">
-            <a href="https://zengkun.me" class="link-info-button-border">
-              <HugeiconsInternetIcon class="link-info-button-icon"/>
-              <div>我的网站</div>
-            </a>
-          </div> -->
 
           </div>
-          <div class="desc-info-container">
+          <!-- 描述 -->
+          <div class="flex flex-col items-center">
             <div style="font-style: italic !important;font-size: 1.2em;">
               一个喜欢做全栈开发和游戏的程序员
             </div>
@@ -76,7 +82,7 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   box-sizing: content-box;
 
   background: linear-gradient(90deg,
-      #ff0000, #ff9900, #9933ff, #ff0000);
+      #ff000080, #ff990080, #9933ff80, #ff000080);
 
   background-clip: border-box;
   background-origin: border-box;
@@ -114,96 +120,5 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   background-size: 50% 100% 100% 100%; */
 
 
-}
-
-
-.link-info-container {
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-  align-items: center;
-
-  gap: 1em;
-}
-
-.my-name-container {
-
-  display: flex;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-
-  /* user-select: none; */
-  /* width: 10rem; */
-
-  &>div {
-    display: block;
-
-    &:nth-child(-n+1) {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 0.25rem;
-
-    }
-  }
-
-}
-
-
-
-.link-info-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-
-
-}
-
-.link-info-button-border {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  text-decoration: none;
-
-  height: fit-content;
-
-  padding: 0.5em;
-  background-color: var(--background-color);
-
-
-  border-radius: var(--global-border-radius-2);
-
-  cursor: pointer;
-  transition: all .1s;
-
-  &:hover {
-    transform: scale(1.1);
-    background-color: var(--theme-color);
-  }
-
-  /* border: 1px solid var(--border-color); */
-}
-
-.link-info-button-icon {
-  width: 1.5em;
-  height: 1.5em;
-
-  margin-right: 0.5em;
-}
-
-.desc-info-container {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
 }
 </style>

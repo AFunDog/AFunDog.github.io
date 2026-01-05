@@ -10,18 +10,6 @@ import { cn } from '../lib/tools';
 const cardSize = { width: 20, height: 30 }
 const cardSpace = 1
 
-// const showCardList = [
-//   {
-//     url: card1, saying: '死亡不属于工人阶级', author: '列宁'
-//   },
-//   {
-//     url: card2, saying: '世界是属于你们的', author: '毛泽东'
-//   },
-//   {
-//     url: card4, saying: '全世界无产者，联合起来!', author: '马克思'
-//   },
-// ]
-
 const props = withDefaults(defineProps<{
   title?: string
   items?: { url: string, saying: string, author: string }[]
@@ -97,18 +85,12 @@ selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
 
   &:hover,
   &.selected {
-    border-style: solid;
-    border-width: 0.25rem;
+    /* border-style: solid; */
+    /* border-width: 0.25rem; */
     width: v-bind('cardSize.width * 1.04 + "rem"');
     height: v-bind('cardSize.height * 1.04 + "rem"');
-    border-color: var(--theme-color);
-    box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44);
-    border-style: solid;
-    border-width: 0.25rem;
-    width: v-bind('cardSize.width * 1.04 + "rem"');
-    height: v-bind('cardSize.height * 1.04 + "rem"');
-    border-color: var(--theme-color);
-    box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44);
+    /* border-color: var(--theme-color); */
+    /* box-shadow: 0.2rem 0.2rem 0.6rem 0.3rem rgb(from var(--theme-color) r g b / .44); */
     transform: translateY(-0.25rem);
   }
 

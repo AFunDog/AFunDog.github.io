@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { DefineComponent, provide, ref, watch } from 'vue';
-import NavBar from './components/NavBar.vue'
 import CustomHeader from './components/AppHeader.vue';
 import { useRouter } from 'vue-router';
 import AppBackgroundImage from './assets/app_background.jpg'

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DefineComponent, inject, ref } from 'vue';
+import { inject, ref } from 'vue';
 import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
 import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
 import NavBar from './NavBar.vue';
