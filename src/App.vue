@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router';
 import AppBackgroundImage from './assets/app_background.jpg'
 import AppLastImage from './assets/app_last.png'
 import SubNavBar from './components/LeftNavBar.vue';
+import ImageLoader from './components/ImageLoader.vue';
 
 
 
@@ -76,22 +77,12 @@ function onHeaderIconClick() {
 <template>
   <div>
 
-    <img class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
+    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
     <div class="fixed top-0 w-full h-full -z-10 main-background-image-mask">
     </div>
 
     <CustomHeader :icon="($route.meta.icon as DefineComponent)" :content="($route.meta.title as string)"
       @header-title-click="onHeaderTitleClick" @header-icon-click="onHeaderIconClick" />
-
-    <!--     
-    <div class="top-background-image-container">
-      <img src="/src/assets/main_background.jpg" />
-    </div> -->
-
-    <!-- <div class="header-title-container" @click="onHeaderTitleClick">
-      <component class="header-title-icon" :is="(router.currentRoute.value.meta.icon as DefineComponent)"></component>
-      <div class="header-title">{{ router.currentRoute.value.meta.title }}</div>
-    </div> -->
 
     <SubNavBar @focusin="isLeftNavBarShow = true" @focusout="isLeftNavBarShow = false" :is-show="isLeftNavBarShow"
       :items="router.getRoutes().map(route => {
@@ -103,7 +94,9 @@ function onHeaderIconClick() {
       <div class="view-container">
         <RouterView v-slot="{ Component, route }">
           <Transition :name="viewTransition" @before-leave="onBeforeLeaved" @after-leave="onAfterLeaved">
-            <component :is="Component" :key="route.path" />
+            <KeepAlive>
+              <component :is="Component" :key="route.path" />
+            </KeepAlive>
           </Transition>
         </RouterView>
       </div>
@@ -111,7 +104,7 @@ function onHeaderIconClick() {
     </main>
     <!-- 展示末尾图片 -->
     <div :class="['last-image-container', { 'hide': !isLastImageShow }]">
-      <img alt="剧终图" :src="AppLastImage" />
+      <ImageLoader class="img" :src="AppLastImage" alt="剧终图" />
     </div>
   </div>
 </template>
@@ -129,7 +122,7 @@ function onHeaderIconClick() {
 
   z-index: -1;
 
-  &>img {
+  &>.img {
     width: 100%;
   }
 

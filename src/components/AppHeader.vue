@@ -3,6 +3,8 @@ import { inject, ref } from 'vue';
 import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
 import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
 import NavBar from './NavBar.vue';
+import ImageLoader from './ImageLoader.vue';
+import MyIcon from '../assets/头像.png';
 
 // import { getCurrentInstance } from 'vue';
 
@@ -34,7 +36,7 @@ function onHeaderIconClick() {
   <div class="header-root header-bottom-line">
     <div style="display: grid;grid-template-columns: 1fr auto 1fr;place-items: center;">
       <div class="header-icon-container" @click="onHeaderIconClick">
-        <img class="header-icon" src="../assets/头像.png" />
+        <ImageLoader class="header-icon" :src="MyIcon" />
         <p class="caption-name">曾昆</p>
       </div>
       <header class="header-container">

@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<{
 
 <template>
   <a :href="link"
-    class="grid grid-cols-[auto_1fr] gap-x-2 items-center h-fit p-2 bg-(--background-color) rounded-(--global-border-radius-2) cursor-pointer transition-all hover:bg-(--theme-color) hover:transform-[scale(1.1)]">
+    class="grid grid-cols-[auto_1fr] gap-x-2 items-center h-fit p-2 bg-(--background-color) rounded-(--global-border-radius-2) cursor-pointer transition-all hover:transform-[scale(1.1)]">
     <div>
       <slot></slot>
     </div>

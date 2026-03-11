@@ -2,8 +2,10 @@
 import { inject, ref } from 'vue';
 import GithubIcon from '../assets/icons/GithubIcon.vue'
 import { cn } from '../lib/tools';
+import MyIcon from '../assets/头像.png';
 import OutsideWebLinkButton from './OutsideWebLinkButton.vue';
 import BiliBiliIcon from '../assets/icons/BiliBiliIcon.vue';
+import ImageLoader from './ImageLoader.vue';
 
 
 const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
@@ -19,8 +21,8 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
           <div class="flex flex-col justify-center items-center gap-y-2">
             <!-- 头像 -->
             <div class="flex flex-row justify-start items-center">
-              <img class="w-32 h-32 rounded-[50%] shadow-[0_0_0.25rem_0.25rem_rgba(0,0,0,0.33)]"
-                src="../assets/头像.png" />
+              <ImageLoader class="w-32 h-32 rounded-[50%] shadow-[0_0_0.25rem_0.25rem_rgba(0,0,0,0.33)]"
+                :src="MyIcon" />
             </div>
 
             <!-- 关于我 -->

@@ -6,6 +6,7 @@ import card2 from '../assets/showcards/card2.png'
 // import card3 from '../assets/showcards/card3.png'
 import card4 from '../assets/showcards/card4.png'
 import { cn } from '../lib/tools';
+import ImageLoader from './ImageLoader.vue';
 
 const cardSize = { width: 20, height: 30 }
 const cardSpace = 1
@@ -39,8 +40,8 @@ selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
       class="flex relative justify-center m-[0_auto] transform-(--slide-container-transform) items-center h-(--slide-container-height) transition-all duration-200">
       
       <div class="block" v-for="(card, index) in props.items">
-        <div @click="onCardClicked(index)" :class="cn('show-card', [selectedIndex == index ? 'selected' : ''])">
-          <img :src="card.url" :alt="card.saying" />
+        <div @click="onCardClicked(index)" :class="cn(' show-card', [selectedIndex == index ? 'selected' : ''])">
+          <ImageLoader class="img" :src="card.url" :alt="card.saying" />
           <p class="show-card-saying">{{ card.saying }}</p>
           <h4 class="show-card-author">— {{ card.author }}</h4>
         </div>
@@ -104,7 +105,7 @@ selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
     height: v-bind('cardSize.height * 1.1 + "rem"');
   }
 
-  &>img {
+  &>.img {
     display: inline-block;
     /* transform: translateX(-30%); */
     height: 75%;
