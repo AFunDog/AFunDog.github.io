@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* tailwindcss dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* 字体图标声明 */
 /* @font-face {
   font-family: 'icomoon';
@@ -123,7 +126,7 @@ img {
 
 .acrylic {
 
-  background-color: color-mix(in srgb, var(--background-color), transparent 60%);
+  background-color: color-mix(in srgb, var(--background-color), transparent 66%);
   /* 半透明背景 */
   backdrop-filter: blur(1rem);
   /* 背景模糊 */

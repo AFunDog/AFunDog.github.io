@@ -15,10 +15,10 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   <div>
     <div class="flex justify-center items-center">
       <div
-        :class="cn('flex justify-center items-center border-animation max-w-200 rounded-(--global-border-radius-4)', [isInfoBorderShow ? 'w-4/5 scale-100 h-100' : 'w-0 h-0 scale-0'])">
+        :class="cn('flex justify-center items-center max-w-200 shadow-2xl rounded-(--global-border-radius-4)', [isInfoBorderShow ? 'w-4/5 scale-100 h-100' : 'w-0 h-0 scale-0'])">
         <div
-          :class="cn('flex flex-row justify-evenly items-center acrylic h-full w-full rounded-(--global-border-radius-4) p-4')">
-          <div class="flex flex-col justify-center items-center gap-y-2">
+          :class="cn('flex flex-row justify-evenly items-center infobar-bg  acrylic  h-full w-full rounded-(--global-border-radius-4) p-4 ')">
+          <div class="flex flex-col justify-center items-center gap-y-2 ">
             <!-- 头像 -->
             <div class="flex flex-row justify-start items-center">
               <ImageLoader class="w-32 h-32 rounded-[50%] shadow-[0_0_0.25rem_0.25rem_rgba(0,0,0,0.33)]"
@@ -77,6 +77,10 @@ const isInfoBorderShow = inject('isInfoBorderShow', ref(false))
   100% {
     background-position: 200% 0%;
   }
+}
+
+.infobar-bg {
+  background-color: color-mix(in srgb, var(--background-color), transparent 33%);
 }
 
 .border-animation {

@@ -57,7 +57,6 @@ onMounted(() => {
 
     <!-- 图片 -->
     <img ref="imageRef" :src="src" :alt="alt"
-      v-show="imageLoaded"
       class="w-full h-full object-cover opacity-0 transition-opacity duration-500"
       :class="{ 'opacity-100': imageLoaded }" />
   </div>

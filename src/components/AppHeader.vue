@@ -34,12 +34,12 @@ function onHeaderIconClick() {
 
 <template>
   <div class="header-root header-bottom-line">
-    <div style="display: grid;grid-template-columns: 1fr auto 1fr;place-items: center;">
+    <div class="grid grid-cols-[auto_1fr_auto] place-items-center">
       <div class="header-icon-container" @click="onHeaderIconClick">
-        <ImageLoader class="header-icon" :src="MyIcon" />
+        <ImageLoader class="w-12 h-12 rounded-full header-icon" :src="MyIcon" />
         <p class="caption-name">曾昆</p>
       </div>
-      <header class="header-container">
+      <header class="header-container w-full">
         <!-- <div class="header-title-container" @click="onHeaderTitleClick">
           <component class="header-title-icon" :is="props.icon as DefineComponent"></component>
           <div class="header-title">{{ props.content }}</div>
@@ -65,22 +65,14 @@ function onHeaderIconClick() {
 .header-container {
   display: flex;
 
-  /* cursor: pointer; */
-
-  /* width: fit-content; */
+  justify-self: flex-start;
 
   justify-content: center;
   align-items: center;
 
-  /* margin-top: 1rem; */
-  /* padding-top: 1em; */
+
   text-align: center;
   font-weight: bold;
-  /* font-size: 2em; */
-
-  /* margin-top: 0.5em; */
-  /* margin-bottom: 1em; */
-
   user-select: none;
 
   &>div {
@@ -115,7 +107,7 @@ function onHeaderIconClick() {
   /* padding-top: 1.5rem; */
   /* left: 2%; */
 
-  margin-left: 3em;
+  margin-left: 2em;
 
   justify-content: left;
   align-items: center;
@@ -132,13 +124,6 @@ function onHeaderIconClick() {
 }
 
 .header-icon {
-
-  width: 2.5rem;
-  height: 2.5rem;
-
-  /* 让头像圆形展示 */
-  border-radius: 50%;
-
   box-shadow: 0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.33);
 }
 
@@ -171,9 +156,9 @@ function onHeaderIconClick() {
 }
 
 .change-theme-container{
-  justify-self: flex-end;
+  justify-self: center;
 
-  margin-right: 3em;
+  margin-right: 1em;
 }
 
 .change-theme-icon {

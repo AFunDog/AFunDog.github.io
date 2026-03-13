@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DefineComponent, provide, ref, watch } from 'vue';
+import { DefineComponent, ref, inject } from 'vue';
 import CustomHeader from './components/AppHeader.vue';
 import { useRouter } from 'vue-router';
 import AppBackgroundImage from './assets/app_background.jpg'
@@ -7,7 +7,9 @@ import AppLastImage from './assets/app_last.png'
 import SubNavBar from './components/LeftNavBar.vue';
 import ImageLoader from './components/ImageLoader.vue';
 
-
+// 从主题插件中注入状态
+const isDarkMode = inject('isDarkMode', ref(true));
+const isInfoBorderShow = inject('isInfoBorderShow', ref(true));
 
 // const globalProps = getCurrentInstance()?.appContext.config.globalProperties
 
@@ -19,21 +21,6 @@ const curIndex = ref(0)
 
 const isLeftNavBarShow = ref(false)
 const isLastImageShow = ref(true)
-const isInfoBorderShow = ref(true)
-
-const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-const isDarkMode = ref(mediaQuery.matches)
-// 监听主题颜色发生改变
-mediaQuery.addEventListener('change', (e) => {
-  isDarkMode.value = e.matches
-  console.debug("主题发生变化 Dark", e.matches)
-})
-watch(isDarkMode, (value) => {
-  document.documentElement.classList.toggle('light', !value)
-})
-
-provide('isInfoBorderShow', isInfoBorderShow)
-provide('isDarkMode', isDarkMode)
 
 // watchEffect(() =>{
 //   console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -77,7 +64,7 @@ function onHeaderIconClick() {
 <template>
   <div>
 
-    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
+    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10 dark:visible" :src="AppBackgroundImage" />
     <div class="fixed top-0 w-full h-full -z-10 main-background-image-mask">
     </div>
 

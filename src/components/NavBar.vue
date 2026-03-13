@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 
 
-const itemSize = { width: 8, height: 3 }
+const itemSize = { width: 6, height: 3 }
 
 const router = useRouter()
 
@@ -22,7 +22,7 @@ const navTopList = router.getRoutes()
     <RouterLink v-for="(item, index) in navTopList" :class="['nav-item', { 'selected': router.currentRoute.value.path === item.path }]"
       :to="(item.path)">
       <div class="nav-item-content">
-        <component class="nav-item-icon" :is="item.meta.icon as DefineComponent"/>
+        <component class="nav-item-icon" :is="(item.meta.icon as DefineComponent)" />
         <div>
           {{ item.meta.title as string }}
         </div>
@@ -32,6 +32,8 @@ const navTopList = router.getRoutes()
 </template>
 
 <style scoped>
+
+
 .nav-bar {
   display: flex;
 
@@ -40,6 +42,7 @@ const navTopList = router.getRoutes()
   list-style: none;
   justify-content: center;
   align-items: center;
+
 
   color: var(--white-color);
   
@@ -54,7 +57,7 @@ const navTopList = router.getRoutes()
 
   text-align: center;
   line-height: v-bind('itemSize.height + "rem"');
-  width: v-bind('itemSize.width + "rem"');
+  min-width: v-bind('itemSize.width + "rem"');
   height: v-bind('itemSize.height + "rem"');
 
 

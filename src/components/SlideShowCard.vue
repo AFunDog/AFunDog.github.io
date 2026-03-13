@@ -37,18 +37,19 @@ selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
     </div>
     <div class="w-full overflow-hidden">
       <div
-      class="flex relative justify-center m-[0_auto] transform-(--slide-container-transform) items-center h-(--slide-container-height) transition-all duration-200">
-      
-      <div class="block" v-for="(card, index) in props.items">
-        <div @click="onCardClicked(index)" :class="cn(' show-card', [selectedIndex == index ? 'selected' : ''])">
-          <ImageLoader class="img" :src="card.url" :alt="card.saying" />
-          <p class="show-card-saying">{{ card.saying }}</p>
-          <h4 class="show-card-author">— {{ card.author }}</h4>
+        class="flex relative justify-center m-[0_auto] transform-(--slide-container-transform) items-center h-(--slide-container-height) transition-all duration-200">
+
+        <div class="block" v-for="(card, index) in props.items">
+          <div @click="onCardClicked(index)"
+            :class="cn('show-card acrylic', [selectedIndex == index ? 'selected' : ''])">
+            <ImageLoader class="img" :src="card.url" :alt="card.saying" />
+            <p class="show-card-saying">{{ card.saying }}</p>
+            <h4 class="show-card-author">— {{ card.author }}</h4>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <style scoped>
@@ -79,7 +80,7 @@ selectedIndex.value = Math.floor((props.items?.length ?? 0) / 2)
 
   align-items: center;
 
-  box-shadow: 0.2rem 0.2rem 0.4rem 0.2rem color-mix(in srgb, var(--background-color), transparent 66%);
+  box-shadow: 0.2rem 0.2rem 0.4rem 0.2rem color-mix(in srgb, black, transparent 66%);
 
   transition: all .2s;
 
