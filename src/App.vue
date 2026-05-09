@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DefineComponent, ref, inject, computed } from 'vue';
+import { DefineComponent, ref, inject } from 'vue';
 import CustomHeader from './components/AppHeader.vue';
 import { useRouter } from 'vue-router';
 import AppBackgroundDarkImage from './assets/app-background-dark.jpg'
@@ -11,8 +11,6 @@ import ImageLoader from './components/ImageLoader.vue';
 // 从主题插件中注入状态
 const isDarkMode = inject('isDarkMode', ref(true));
 const isInfoBorderShow = inject('isInfoBorderShow', ref(true));
-
-const AppBackgroundImage = computed(() => isDarkMode.value ? AppBackgroundDarkImage : AppBackgroundLightImage)
 
 // const globalProps = getCurrentInstance()?.appContext.config.globalProperties
 
@@ -67,7 +65,12 @@ function onHeaderIconClick() {
 <template>
   <div>
 
-    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
+    <div class="fixed top-0 w-full h-full -z-10">
+      <ImageLoader class="background-image w-full h-full object-cover" :src="AppBackgroundDarkImage"
+        :class="{ 'opacity-0': !isDarkMode }" />
+      <ImageLoader class="background-image w-full h-full object-cover" :src="AppBackgroundLightImage"
+        :class="{ 'opacity-0': isDarkMode }" />
+    </div>
     <div class="fixed top-0 w-full h-full -z-10 main-background-image-mask">
     </div>
 
@@ -100,6 +103,13 @@ function onHeaderIconClick() {
 </template>
 
 <style scoped>
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity .6s ease-in-out;
+}
+
 .main-background-image-mask {
 
   background-image:

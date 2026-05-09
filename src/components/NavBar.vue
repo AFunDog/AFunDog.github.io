@@ -44,10 +44,7 @@ const navTopList = router.getRoutes()
   align-items: center;
 
 
-  color: var(--white-color);
-  
-
-  /* background-color: aliceblue; */
+  color: var(--foreground-color);
 }
 
 .nav-item {
@@ -87,7 +84,7 @@ const navTopList = router.getRoutes()
     width: 40%;
     height: 0.1rem;
    
-    background-color: var(--white-color);
+    background-color: color-mix(in srgb, var(--foreground-color) 33%, transparent);
     transition: all .2s;
   }
 }

@@ -56,7 +56,7 @@ function onHeaderIconClick() {
 
 <style scoped>
 .header-root {
-  color: var(--white-color);
+  color: var(--foreground-color);
 
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -92,7 +92,7 @@ function onHeaderIconClick() {
     margin: 0 auto;
     margin-top: 0.25rem;
     content: '';
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: color-mix(in srgb, var(--foreground-color) 33%, transparent);
   }
 }
 
