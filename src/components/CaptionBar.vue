@@ -49,7 +49,7 @@
   font-size: var(--caption-base-font-size);
   /* font-weight: bold; */
   font-family: '华文行楷';
-  color: var(--white-color);
+  color: var(--foreground-color);
 
   user-select: none;
   cursor: pointer;

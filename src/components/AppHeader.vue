@@ -60,6 +60,10 @@ function onHeaderIconClick() {
 
   margin-top: 0.5em;
   margin-bottom: 0.5em;
+
+  background-color: color-mix(in srgb, var(--background-color), transparent 55%);
+  backdrop-filter: blur(0.5rem);
+  border-radius: var(--global-border-radius-2);
 }
 
 .header-container {
