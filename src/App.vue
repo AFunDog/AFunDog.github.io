@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { DefineComponent, ref, inject } from 'vue';
+import { DefineComponent, ref, inject, computed } from 'vue';
 import CustomHeader from './components/AppHeader.vue';
 import { useRouter } from 'vue-router';
-import AppBackgroundImage from './assets/app_background.jpg'
+import AppBackgroundDarkImage from './assets/app-background-dark.jpg'
+import AppBackgroundLightImage from './assets/app-background-light.jpg'
 import AppLastImage from './assets/app_last.png'
 import SubNavBar from './components/LeftNavBar.vue';
 import ImageLoader from './components/ImageLoader.vue';
@@ -10,6 +11,8 @@ import ImageLoader from './components/ImageLoader.vue';
 // 从主题插件中注入状态
 const isDarkMode = inject('isDarkMode', ref(true));
 const isInfoBorderShow = inject('isInfoBorderShow', ref(true));
+
+const AppBackgroundImage = computed(() => isDarkMode.value ? AppBackgroundDarkImage : AppBackgroundLightImage)
 
 // const globalProps = getCurrentInstance()?.appContext.config.globalProperties
 
@@ -64,7 +67,7 @@ function onHeaderIconClick() {
 <template>
   <div>
 
-    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10 dark:visible" :src="AppBackgroundImage" />
+    <ImageLoader class="fixed top-0 w-full h-full object-cover -z-10" :src="AppBackgroundImage" />
     <div class="fixed top-0 w-full h-full -z-10 main-background-image-mask">
     </div>
 
@@ -102,6 +105,20 @@ function onHeaderIconClick() {
   background-image:
     radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)),
     radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
+}
+
+:root:not(.light) .main-background-image-mask {
+
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .5)),
+    radial-gradient(rgba(0, 0, 0, 0) 33%, rgba(0, 0, 0, .3) 166%);
+}
+
+:root.light .main-background-image-mask {
+
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .3)),
+    radial-gradient(rgba(255, 255, 255, 0) 33%, rgba(255, 255, 255, .15) 166%);
 }
 
 .last-image-container {

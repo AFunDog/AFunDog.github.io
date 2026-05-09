@@ -36,7 +36,7 @@ const slideShowItems = [
   <div class="show-item-container">
     <div class="vspace"></div>
     <div class="horizontal-scroller-section">
-      <HorizontalImageScroller class="h-128" :images="scrollerImages"  :auto-play="true" :interval="5000"
+      <HorizontalImageScroller  :images="scrollerImages"  :auto-play="true" :interval="5000"
         :show-indicators="true" :show-arrows="true" />
     </div>
 
