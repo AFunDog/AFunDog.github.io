@@ -1,29 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
-import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
+import { computed } from 'vue';
+import { Moon, Sun, Monitor } from 'lucide-vue-next';
 import NavBar from './NavBar.vue';
 import ImageLoader from './ImageLoader.vue';
 import MyIcon from '../assets/头像.png';
-import { colorMode } from '../lib/theme';
+import { colorModeStore } from '../lib/theme';
 
 const emits = defineEmits<{ (e: 'headerTitleClick'): void, (e: 'headerIconClick'): void }>()
 
-const isDarkMode = ref(colorMode.value === 'dark')
+// 三态循环：dark → light → auto → dark
+const themeCycle = ['dark', 'light', 'auto'] as const;
+const themeLabels: Record<string, string> = {
+  dark: '暗色模式',
+  light: '亮色模式',
+  auto: '跟随系统',
+};
+
+// 当前图标（基于用户设置，包含 auto）
+const ThemeIcon = computed(() => {
+  if (colorModeStore.value === 'dark') return Moon;
+  if (colorModeStore.value === 'light') return Sun;
+  return Monitor;
+});
+
+// 图标的 aria-label
+const themeIconLabel = computed(() => themeLabels[colorModeStore.value] ?? '自动模式');
 
 function toggleTheme() {
-  const next = colorMode.value === 'dark' ? 'light' : 'dark';
-
-  // 支持 View Transition API 的浏览器使用动画过渡
-  if (document.startViewTransition) {
-    document.startViewTransition(() => {
-      colorMode.value = next;
-      isDarkMode.value = next === 'dark';
-    });
-  } else {
-    colorMode.value = next;
-    isDarkMode.value = next === 'dark';
-  }
+  const currentIndex = themeCycle.indexOf(colorModeStore.value as typeof themeCycle[number]);
+  const next = themeCycle[(currentIndex + 1) % themeCycle.length];
+  colorModeStore.value = next;
 }
 
 // function onHeaderTitleClick() {
@@ -54,7 +60,7 @@ function onHeaderIconClick() {
         <NavBar :index="0"/>
       </header>
       <div class="change-theme-container">
-        <component @click="toggleTheme" class="change-theme-icon" :is="isDarkMode ? LineMdSunnyOutlineToMoonTransitionIcon : LineMdMoonToSunnyOutlineTransitionIcon"/>
+        <component @click="toggleTheme" class="change-theme-icon" :is="ThemeIcon" :aria-label="themeIconLabel" />
       </div>
     </div>
   </div>

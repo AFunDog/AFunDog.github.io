@@ -141,27 +141,5 @@ a {
   text-decoration: none;
 }
 
-/* 主题切换 View Transition 动画 */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
 
-::view-transition-old(root) {
-  animation: theme-fade-out 0.3s ease-in-out;
-}
-
-::view-transition-new(root) {
-  animation: theme-fade-in 0.3s ease-in-out;
-}
-
-@keyframes theme-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-@keyframes theme-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }

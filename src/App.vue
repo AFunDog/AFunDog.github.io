@@ -9,7 +9,7 @@ import SubNavBar from './components/LeftNavBar.vue';
 import ImageLoader from './components/ImageLoader.vue';
 import { colorMode } from './lib/theme';
 
-// 主题状态
+// colorMode.value 已自动解析：auto 模式下也会返回 'dark' 或 'light'
 const isDarkMode = computed(() => colorMode.value === 'dark');
 const isInfoBorderShow = inject('isInfoBorderShow', ref(true));
 
