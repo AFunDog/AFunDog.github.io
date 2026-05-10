@@ -1,24 +1,30 @@
 <script setup lang="ts">
-import { inject, ref } from 'vue';
+import { ref } from 'vue';
 import LineMdSunnyOutlineToMoonTransitionIcon from '../assets/icons/LineMdSunnyOutlineToMoonTransitionIcon.vue';
 import LineMdMoonToSunnyOutlineTransitionIcon from '../assets/icons/LineMdMoonToSunnyOutlineTransitionIcon.vue';
 import NavBar from './NavBar.vue';
 import ImageLoader from './ImageLoader.vue';
 import MyIcon from '../assets/头像.png';
-
-// import { getCurrentInstance } from 'vue';
-
-
-// const props = withDefaults(defineProps<{
-//   content: string,
-//   icon?: DefineComponent | null
-// }>(), {
-//   content: ""
-// })
+import { colorMode } from '../lib/theme';
 
 const emits = defineEmits<{ (e: 'headerTitleClick'): void, (e: 'headerIconClick'): void }>()
 
-const isDarkMode = inject('isDarkMode', ref(true))
+const isDarkMode = ref(colorMode.value === 'dark')
+
+function toggleTheme() {
+  const next = colorMode.value === 'dark' ? 'light' : 'dark';
+
+  // 支持 View Transition API 的浏览器使用动画过渡
+  if (document.startViewTransition) {
+    document.startViewTransition(() => {
+      colorMode.value = next;
+      isDarkMode.value = next === 'dark';
+    });
+  } else {
+    colorMode.value = next;
+    isDarkMode.value = next === 'dark';
+  }
+}
 
 // function onHeaderTitleClick() {
 //   emits('headerTitleClick')
@@ -48,7 +54,7 @@ function onHeaderIconClick() {
         <NavBar :index="0"/>
       </header>
       <div class="change-theme-container">
-        <component @click="isDarkMode = !isDarkMode" class="change-theme-icon" :is="isDarkMode ? LineMdSunnyOutlineToMoonTransitionIcon : LineMdMoonToSunnyOutlineTransitionIcon"/>
+        <component @click="toggleTheme" class="change-theme-icon" :is="isDarkMode ? LineMdSunnyOutlineToMoonTransitionIcon : LineMdMoonToSunnyOutlineTransitionIcon"/>
       </div>
     </div>
   </div>

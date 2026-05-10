@@ -46,35 +46,17 @@
   --black-color: #111111;
   --theme-color: #e67e22;
 
-
-  /* 全局样式设置 默认为 dark */
-  --foreground-color: var(--white-color);
-  --foreground-color-10: color-mix(in srgb, var(--foreground-color), var(--background-color) 10%);
-
-  --background-color: var(--black-color);
-  --background-color-10: color-mix(in srgb, var(--background-color),  var(--foreground-color) 10%);
-  /* --dark-control-color: #202020a8; */
-  --theme-dark-color: color-mix(in srgb, var(--theme-color), black 10%);
-
   --global-border-radius: 0.25em;
   --global-border-radius-2: 0.5em;
   --global-border-radius-3: 0.75em;
   --global-border-radius-4: 1em;
-
-  /* min-width: 0em; */
 
   font-family: sans-serif, system-ui, Inter, Avenir, Helvetica, Arial;
 
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--foreground-color);
-
-
-
   color-scheme: dark light;
-
-  /* background-color: var(--background-color); */
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -85,13 +67,29 @@
   scroll-padding-top: 1rem;
 }
 
+/* 暗色主题（默认） */
+.dark {
+  --foreground-color: var(--white-color);
+  --foreground-color-10: color-mix(in srgb, var(--foreground-color), var(--background-color) 10%);
 
-/* 主题样式调整 */
-/* 浅色覆盖主题 */
+  --background-color: var(--black-color);
+  --background-color-10: color-mix(in srgb, var(--background-color), var(--foreground-color) 10%);
+  --theme-dark-color: color-mix(in srgb, var(--theme-color), black 10%);
+
+  color: var(--foreground-color);
+  color-scheme: dark;
+}
+
+/* 浅色主题 */
 .light {
   --foreground-color: var(--black-color);
-  --background-color: var(--white-color);
+  --foreground-color-10: color-mix(in srgb, var(--foreground-color), var(--background-color) 10%);
 
+  --background-color: var(--white-color);
+  --background-color-10: color-mix(in srgb, var(--background-color), var(--foreground-color) 10%);
+  --theme-dark-color: color-mix(in srgb, var(--theme-color), black 10%);
+
+  color: var(--foreground-color);
   color-scheme: light;
 }
 
@@ -141,4 +139,29 @@ a {
   /* 重置链接颜色 */
   color: inherit;
   text-decoration: none;
+}
+
+/* 主题切换 View Transition 动画 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  animation: theme-fade-out 0.3s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: theme-fade-in 0.3s ease-in-out;
+}
+
+@keyframes theme-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
